@@ -1,0 +1,25 @@
+{
+  "name": "Area51Web",
+  "version": "0.0.1",
+  "dependencies": {},
+  "devDependencies": {
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-contrib-less": "~0.5.0",
+    "grunt-contrib-connect": "~0.5.0",
+    "time-grunt": "~0.1.1",
+    "load-grunt-tasks": "~0.2.0"
+  },
+  "peerDependencies": {
+    "grunt": ">=0.4"
+  },
+  "description": "static Website",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "console.log(\"test\")"
+  },
+  "keywords": [
+    "website"
+  ],
+  "author": "@eporroa",
+  "license": "ISC"
+}
