@@ -22,119 +22,107 @@
   <noscript>
   <link rel="stylesheet" type="text/css" href="styles/styleNoJS.css" />
   </noscript>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-  <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
-  <script src="scripts/lib/modernizr.custom.79639.js"></script>
+
   <script src="scripts/lib/jquery-1.9.1.min.js"></script>
+  <script src="scripts/lib/modernizr.custom.79639.js"></script>
+  <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
   <script src="scripts/lib/jquery.easings.min.js"></script>
   <script src="scripts/lib/jquery.slimscroll.min.js"></script>
-  <script src="scripts/lib/jquery.fullPage.min.js"></script>
+  <script src="scripts/lib/ep.jquery.fullPage.min.js"></script>
+  <script src="scripts/lib/jquery.ba-cond.min.js"></script>
+  <script src="scripts/lib/jquery.slitslider.js"></script>
 </head>
 <body class="lyt-home">
-<div class="wrapper">
-  <header id="header" class="w-fluid">
-    <div class="cf wrap-head">
-      <div class="logo_menu">
-        <h1 class="logo"><a href="#inicio"><img alt="Area51" src="images/logo_area51.png" /></a></h1>
-        <button data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
-          <span class="sr-only">MENU</span>
-          <span class="group-bar"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </span>
-        </button>
-      </div>
-      <nav class="nav_menu">
-        <ul id="topnav" class="menu">
-          <li data-menuanchor="inicio"><a href="#inicio">Inicio</a></li>
-          <li data-menuanchor="cursos"><a href="#cursos">Cursos</a></li>
-          <li data-menuanchor="nosotros"><a href="#nosotros">Nosotros</a></li>
-          <li data-menuanchor="instructors"><a href="#instructors">Instructores</a></li>
-          <li data-menuanchor="contact"><a href="#contact">Contacto</a></li>
+<header id="header" class="w-fluid">
+  <div class="cf wrap-head">
+    <div class="logo_menu">
+      <h1 class="logo"><a href="#inicio"><img alt="Area51" src="images/logo_area51.png" /></a></h1>
+      <button data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
+        <span class="sr-only">MENU</span>
+        <span class="group-bar"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </span>
+      </button>
+    </div>
+    <nav class="nav_menu">
+      <ul id="topnav" class="menu">
+        <li data-menuanchor="inicio"><a href="#sec-inicio">Inicio</a></li>
+        <li data-menuanchor="cursos"><a href="#sec-cursos">Cursos</a></li>
+        <li data-menuanchor="nosotros"><a href="#sec-nosotros">Nosotros</a></li>
+        <li data-menuanchor="instructors"><a href="#sec-instructores">Instructores</a></li>
+        <li data-menuanchor="contact"><a href="#sec-contacto">Contacto</a></li>
+      </ul>
+    </nav>
+    <div class="wrap_telefono_social"> <span class="telefono">(+511) 447-0162</span>
+      <div class="list-social">
+        <ul>
+          <li><a class="tw" href="#">Area51 en Twitter</a></li>
+          <li><a class="yt" href="#">Area51 en Youtube</a></li>
+          <li><a class="gh" href="#">Area51 en Github</a></li>
+          <li class="last"><a class="fb" href="#">Area51 en Facebook</a></li>
         </ul>
-      </nav>
-      <div class="wrap_telefono_social"> <span class="telefono">(+511) 447-0162</span>
-        <div class="list-social">
-          <ul>
-            <li><a class="tw" href="#">Area51 en Twitter</a></li>
-            <li><a class="yt" href="#">Area51 en Youtube</a></li>
-            <li><a class="gh" href="#">Area51 en Github</a></li>
-            <li class="last"><a class="fb" href="#">Area51 en Facebook</a></li>
-          </ul>
-        </div>
       </div>
     </div>
-  </header>
-  <section id="inicio" class="w-fluid section">
-    <div class="wrap_slide">
-      <div id="slider" class="sl-slider-wrapper">
-        <div class="sl-slider">
-          <div class="sl-slide" data-orientation="vertical" data-slice1-rotation="10" data-slice2-rotation="-15" data-slice1-scale="1.5" data-slice2-scale="1.5">
-            <div class="sl-slide-inner">
-              <!-- <div class="bg-img bg-img-1"><img alt=""  class="img" src="images/img_slide.jpg" alt="creditacho" title="creditacho" /></div> -->
-              <div class="cf w-inner">
-                <h2>NEW COURSE <br/>
-                  HTML5 - 20th March</h2>
-                <p>Seamlessly disseminate best-of-breed vortals through user-centric methodologies. Dramatically disintermediate e-business imperatives with ethical opportunities.</p>
-              </div>
-            </div>
-          </div>
-          <div class="sl-slide" data-orientation="vertical" data-slice1-rotation="10" data-slice2-rotation="-15" data-slice1-scale="1.5" data-slice2-scale="1.5">
-            <div class="sl-slide-inner">
-              <!-- <div class="bg-img bg-img-2"><img alt=""  class="img" src="images/img_slide.jpg" alt="creditacho" title="creditacho" /></div> -->
-              <div class="cf w-inner">
-                <h2>NEW COURSE <br/>
-                  HTML5 - 20th March</h2>
-                <p>Seamlessly disseminate best-of-breed vortals through user-centric methodologies. Dramatically disintermediate e-business imperatives with ethical opportunities.</p>
-              </div>
-            </div>
-          </div>
-          <div class="sl-slide" data-orientation="vertical" data-slice1-rotation="10" data-slice2-rotation="-15" data-slice1-scale="1.5" data-slice2-scale="1.5">
-            <div class="sl-slide-inner">
-              <!-- <div class="bg-img bg-img-3"><img alt=""  class="img" src="images/img_slide.jpg" alt="creditacho" title="creditacho" /></div> -->
-              <div class="cf w-inner">
-                <h2>NEW COURSE <br/>
-                  HTML5 - 20th March</h2>
-                <p>Seamlessly disseminate best-of-breed vortals through user-centric methodologies. Dramatically disintermediate e-business imperatives with ethical opportunities.</p>
-              </div>
-            </div>
-          </div>
-          <div class="sl-slide" data-orientation="vertical" data-slice1-rotation="10" data-slice2-rotation="-15" data-slice1-scale="1.5" data-slice2-scale="1.5">
-            <div class="sl-slide-inner">
-              <!-- <div class="bg-img bg-img-4"><img alt=""  class="img" src="images/img_slide.jpg" alt="creditacho" title="creditacho" /></div> -->
-              <div class="cf w-inner">
-                <h2>NEW COURSE <br/>
-                  HTML5 - 20th March</h2>
-                <p>Seamlessly disseminate best-of-breed vortals through user-centric methodologies. Dramatically disintermediate e-business imperatives with ethical opportunities.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <nav id="nav-dots" class="nav-dots"> <span class="nav-dot-current"></span> <span></span> <span></span> <span></span> </nav>
-      </div>
+  </div>
+</header>
+<div id="fullpage">
+  <section id="sec-inicio" class="section w-fluid">
+      <div class="slide">
+  <!-- <div class="bg-img bg-img-1"><img alt=""  class="img" src="images/img_slide.jpg" alt="creditacho" title="creditacho" /></div> -->
+  <div class="cf w-inner">
+    <h2>NEW COURSE <br/>
+      HTML5 - 20th March</h2>
+    <p>Seamlessly disseminate best-of-breed vortals through user-centric methodologies. Dramatically disintermediate e-business imperatives with ethical opportunities.</p>
+  </div>
+</div>
+<div class="slide">
+  <!-- <div class="bg-img bg-img-1"><img alt=""  class="img" src="images/img_slide.jpg" alt="creditacho" title="creditacho" /></div> -->
+  <div class="cf w-inner">
+    <h2>NEW COURSE <br/>
+      HTML5 - 20th March</h2>
+    <p>Seamlessly disseminate best-of-breed vortals through user-centric methodologies. Dramatically disintermediate e-business imperatives with ethical opportunities.</p>
+  </div>
+</div>
+<div class="slide">
+  <!-- <div class="bg-img bg-img-1"><img alt=""  class="img" src="images/img_slide.jpg" alt="creditacho" title="creditacho" /></div> -->
+  <div class="cf w-inner">
+    <h2>NEW COURSE <br/>
+      HTML5 - 20th March</h2>
+    <p>Seamlessly disseminate best-of-breed vortals through user-centric methodologies. Dramatically disintermediate e-business imperatives with ethical opportunities.</p>
+  </div>
+</div>
+<div class="slide">
+  <!-- <div class="bg-img bg-img-1"><img alt=""  class="img" src="images/img_slide.jpg" alt="creditacho" title="creditacho" /></div> -->
+  <div class="cf w-inner">
+    <h2>NEW COURSE <br/>
+      HTML5 - 20th March</h2>
+    <p>Seamlessly disseminate best-of-breed vortals through user-centric methodologies. Dramatically disintermediate e-business imperatives with ethical opportunities.</p>
+  </div>
+</div>
+<nav id="nav-dots" class="nav-dots"> <span class="nav-dot-current"></span> <span></span> <span></span> <span></span> </nav>
+<div id="certificados" class="w-fluid">
+  <div class="tr"></div>
+  <div class="cf w-inner">
+    <p>Certified training center</p>
+    <div class="wrap-logo">
+      <article class="item-alianza">
+        <figure> <img alt="" src="images/logo_alianzas_1.png" /> </figure>
+      </article>
+      <article class="item-alianza">
+        <figure> <img alt="" src="images/logo_alianzas_2.png" /> </figure>
+      </article>
+      <article class="item-alianza">
+        <figure> <img alt="" src="images/logo_alianzas_3.png" /> </figure>
+      </article>
+      <article class="item-alianza">
+        <figure> <img alt="" src="images/logo_alianzas_4.png" /> </figure>
+      </article>
+      <article class="item-alianza">
+        <figure> <img alt="" src="images/logo_alianzas_5.png" /> </figure>
+      </article>
     </div>
-    <section id="certificados" class="w-fluid">
-      <div class="tr"></div>
-      <div class="cf w-inner">
-        <p>Certified training center</p>
-        <div class="wrap-logo">
-          <article class="item-alianza">
-            <figure> <img alt="" src="images/logo_alianzas_1.png" /> </figure>
-          </article>
-          <article class="item-alianza">
-            <figure> <img alt="" src="images/logo_alianzas_2.png" /> </figure>
-          </article>
-          <article class="item-alianza">
-            <figure> <img alt="" src="images/logo_alianzas_3.png" /> </figure>
-          </article>
-          <article class="item-alianza">
-            <figure> <img alt="" src="images/logo_alianzas_4.png" /> </figure>
-          </article>
-          <article class="item-alianza">
-            <figure> <img alt="" src="images/logo_alianzas_5.png" /> </figure>
-          </article>
-        </div>
-      </div>
-    </section>
+  </div>
+</div>
   </section>
-  <section id="cursos" class="w-fluid section">
+  <section id="sec-cursos" class="section w-fluid">
     <div class="tr"></div>
     <div class="cf w-inner">
       <div class="head">
@@ -196,7 +184,7 @@
       </div>
     </div>
   </section>
-  <section id="nosotros" class="w-fluid section">
+  <section id="sec-nosotros" class="section w-fluid">
     <div class="cf w-inner">
       <article class="text">
         <h2>¿QUÉ ES AREA 51?</h2>
@@ -256,8 +244,9 @@
     </section>
     <svg id="bigTriangleColor" xmlns="http://www.w3.org/2000/svg" width="100%" height="40" viewBox="0 0 100 102" preserveAspectRatio="none">
     <path d="M0 0 L50 100 L100 0 Z" />
-    </svg> </section>
-  <section id="instructors" class="w-fluid section">
+    </svg>
+  </section>
+  <section id="sec-instructores" class="section w-fluid">
     <div class="cf w-inner">
       <div class="head">
         <h2>INSTRUCTORES</h2>
@@ -332,7 +321,7 @@
       </div>
     </div>
   </section>
-  <section id="contact" class="w-fluid section">
+  <section id="sec-contacto" class="section w-fluid">
     <div id="map"></div>
     <div id="map-overlay" style=""></div>
     <div id="contact-content">
@@ -414,8 +403,6 @@
   </section>
 </div>
 <script src="scripts/gmaps.js"></script>
-<script src="scripts/lib/jquery.ba-cond.min.js"></script>
-<script src="scripts/lib/jquery.slitslider.js"></script>
 <script src="scripts/main.js"></script>
 </body>
 </html>
