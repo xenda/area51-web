@@ -77,12 +77,10 @@
             checkMenuChange = function (index) {
               if (index > 1) {
                 if (!$header.is('.wrap-head-min')) {
-                  $header.fadeIn(100, function (){
-                    $header.addClass('wrap-head-min');
-                  });
+                  $header.addClass('wrap-head-min');
                 }
               } else {
-                $header.removeClass('wrap-head-min');
+                $header.removeClass('wrap-head-min').removeClass('wrap-head-home');
               }
             };
         $('#topnav a').each(function (i, item) {
@@ -92,21 +90,23 @@
           'anchors': ['inicio', 'cursos', 'nosotros', 'instructores', 'contacto'],
           'slidesColor': ['none', '#3e3e3e', '#3e3e3e', '#3e3e3e', '#ccc'],
           'scrollOverflow': true,
+          'scrollingSpeed': 1000,
           'fixedElements': '#header',
           'menu': '#header',
-          // 'easing': 'swing',
           'paddingTop': '83px',
           'onLeave': function (index, direction) {
             $.noop(direction);
             checkMenuChange(index);
+            if (index === 2 && direction === 'up') {
+              $('#header .wrap-head').addClass('wrap-head-home');
+            }
           },
           'afterLoad': function (anchorLink, index) {
             checkMenuChange(index);
           },
           'onSlideLeave': function (anchorLink, index, slideIndex, direction) {
             console.log(anchorLink, index, slideIndex, direction);
-          },
-          // 'css3': true
+          }
         }
         /*{
           // 'autoScrolling': false,
