@@ -594,6 +594,41 @@ to { -webkit-transform: translateY(0px); }
 #sec-nosotros{
     background: url("@{img}/bg_nosotros.jpg") no-repeat top center;
     bottom: -5px;
+    position: relative;
+
+    .text-float {
+        position: absolute;
+        top: 30%;
+        left: 60%;
+
+        width: 36%;
+
+        p {
+            font-family: 'Monda', sans-serif, arial;
+            margin: 0 0 12px;
+            font-size: 22px;
+            line-height: 1.3em;
+            font-weight: 100;
+            
+            color: #fff;
+            text-shadow: 0 1px 1px rgba(0,0,0,0.7);
+        }
+
+        &.dark p {
+            color: #111;
+            text-shadow: 0 1px 1px rgba(255,255,255,0.7);
+        }
+
+        .btn {
+            font-size: 14px;
+            line-height: 1em;
+            letter-spacing: 0;
+        }
+    }
+
+    .tableCell {
+        vertical-align: bottom;
+    }
     .w-inner{padding: 0;}
     .text{margin-top: 300px;background: #FFF;float: left;width: 100%;padding: 20px;
         h2{color: @bluedark;margin-bottom: 15px;}
@@ -603,8 +638,8 @@ to { -webkit-transform: translateY(0px); }
 }
 #alianzas{
     .w-inner{padding: 15px 20px;}
-    .item-alianza{text-align: left;margin-bottom: 25px;
-        figure{margin-bottom: 10px;
+    .item-alianza{text-align: left;
+        figure{ line-height: 1%;
             img{display: block;max-width: 100%;}
         }
         h3{font-family: "DINEngschriftStd-2";font-weight: normal; color: @bluedark;font-size: 20px;margin-bottom: 10px;text-transform: uppercase;text-align: left;
@@ -1067,8 +1102,8 @@ svg#bigTriangleColor {
 @media only screen and (min-width: 64em) {/* About 1024px*/
     .tester{background:cyan;}
     #alianzas{text-align: left;
-        .w-inner{padding: 15px 80px;}
-        .item-alianza{width: 17%;margin: 0 1% 35px;
+        .w-inner{padding: 15px 80px 2px;}
+        .item-alianza{width: 17%;margin: 0 1%;
             figure{text-align: center;
                 img{display: inline-block;max-width: 100%;}
             }
@@ -1088,7 +1123,7 @@ svg#bigTriangleColor {
 @media only screen and (min-width: 70.250em) {/* About 1124px*/
     #alianzas{
       .item-alianza{
-        padding-bottom: 5%;
+        // padding-bottom: 5px;
       }
     }
     #sec-cursos{
