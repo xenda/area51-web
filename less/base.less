@@ -261,7 +261,7 @@ a{
 }
 #header{
     //background: url("@{img}img_slide.jpg") no-repeat;
-    position: fixed;
+    position: absolute;
     top: 0;
     padding: 0 0 0;
     .header-inner{
@@ -416,16 +416,22 @@ a{
         }
     }
     .wrap-head-home {
-        -webkit-animation: fadeInScrollUp .6s ease-in-out;
+        -webkit-animation: fadeInScrollUp .4s ease-out;
     }
 }
 @-webkit-keyframes scrollDown {
-from { -webkit-transform: translateY(-100px); }
-to { -webkit-transform: translateY(0px); }
+    from { -webkit-transform: translateY(-100px); }
+    to { -webkit-transform: translateY(0px); }
 }
 @-webkit-keyframes fadeInScrollUp {
-from { -webkit-transform: translateY(0px); opacity: 1; }
-to { -webkit-transform: translateY(-100px); opacity: 0; }
+    from {
+        -webkit-transform: translateY(0px);
+        opacity: 1;
+    }
+    to {
+        -webkit-transform: translateY(-100px);
+        opacity: 0;
+    }
 }
 
 .sl-slides-wrapper .sl-slide-inner .w-inner{ padding: 180px 20px 100px; max-width: 450px;}
@@ -618,7 +624,7 @@ to { -webkit-transform: translateY(-100px); opacity: 0; }
             font-size: 22px;
             line-height: 1.3em;
             font-weight: 100;
-            
+
             color: #fff;
             text-shadow: 0 1px 1px rgba(0,0,0,0.7);
         }

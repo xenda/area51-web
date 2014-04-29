@@ -75,9 +75,13 @@
       if (!supportBlacklist()) {
         var $header  = $('#header .wrap-head'),
             checkMenuChange = function (index) {
+              if (index === 1) {
+                $('#header').prependTo('#sec-inicio');
+              }
               if (index > 1) {
                 if (!$header.is('.wrap-head-min')) {
                   $header.addClass('wrap-head-min');
+                  $('#header').insertAfter('#superContainer');
                 }
               } else {
                 $header.removeClass('wrap-head-min').removeClass('wrap-head-home');
@@ -86,6 +90,7 @@
         $('#topnav a').each(function (i, item) {
           $(item).attr('href', item.href.replace('sec-', ''));
         });
+
         $.fn.fullpage({
           'anchors': ['inicio', 'cursos', 'nosotros', 'instructores', 'contacto'],
           'slidesColor': ['none', '#3e3e3e', '#3e3e3e', '#3e3e3e', '#ccc'],
@@ -97,8 +102,10 @@
           'onLeave': function (index, direction) {
             $.noop(direction);
             checkMenuChange(index);
-            if (index === 2 && direction === 'up') {
-              $('#header .wrap-head').addClass('wrap-head-home');
+            if (index > 1 && direction === 'up') {
+              if ($header.is('.wrap-head-home')) {
+                $header.addClass('wrap-head-home');
+              }
             }
           },
           'afterLoad': function (anchorLink, index) {
