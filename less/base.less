@@ -268,7 +268,15 @@ a{
         padding-top: 20px;
         padding-bottom: 20px;
     }
-    .wrap-head{position: absolute;z-index: 100;left: 0;top: 0;padding: 30px 20px 0;width: 100%;}
+    .wrap-head{
+        position: absolute;
+        z-index: 100;
+        left: 0;
+        top: 0;
+        padding: 30px 20px 0;
+        width: 100%;
+        .transitions();
+    }
     .logo_menu{
         float: left;
         width: 40%;
@@ -372,6 +380,7 @@ a{
             }
         }
     }
+
     .wrap-head-min{
         background: -moz-linear-gradient(top,  rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.36) 100%); /* FF3.6+ */
 background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0.3)), color-stop(100%,rgba(255,255,255,0.36))); /* Chrome,Safari4+ */
@@ -383,12 +392,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4dffffff', e
 
         padding-bottom: 5px;
         padding-top: 5px;
+        -webkit-animation: scrollDown 1s ease-out;
         .logo_menu{
             max-width: 125px;
         }
         .nav_menu {
             margin-top: 15px;
-            ul.menu li a{font-size: 0.9em;}
+            ul.menu li a{font-size: 0.9em; color: #000; }
         }
         .wrap_telefono_social{
             margin-top: 0;
@@ -396,7 +406,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4dffffff', e
                 margin-top: 20px;
             }
             .telefono{
-                font-size: .9em;
+                /*font-size: .9em;*/
                 margin-top: 30px;
             }
         }
@@ -404,12 +414,17 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4dffffff', e
 
 
 }
+
+@-webkit-keyframes scrollDown {
+from { -webkit-transform: translateY(-100px); }
+to { -webkit-transform: translateY(0px); }
+}
 .sl-slides-wrapper .sl-slide-inner .w-inner{ padding: 180px 20px 100px; max-width: 450px;}
 #sec-inicio{
   background:#FFF url("@{img}/img_slide.jpg") no-repeat;
   background-size: cover;
     .slide{
-        min-height: 60%;
+        min-height: 100%;
         h2{color: @blue;text-align: center;font-size: 40px;line-height: 55px;margin-bottom: 20px;}
         p{color: #FEFFFF;font-size: 13px;line-height: 22px;text-align: center;}
     }

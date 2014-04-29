@@ -1,9 +1,6 @@
 'use strict';
 /* globals Modernizr, jQuery, GMaps, window, document, navigator */
 (function (Modernizr, $, GMaps, window, document, navigator) {
-  function noop() {
-    return Array.prototype.slice.apply(arguments);
-  }
   function supportBlacklist() {
     var w = window,
       ua = navigator.userAgent,
@@ -80,7 +77,9 @@
             checkMenuChange = function (index) {
               if (index > 1) {
                 if (!$header.is('.wrap-head-min')) {
-                  $header.addClass('wrap-head-min');
+                  $header.fadeIn(100, function (){
+                    $header.addClass('wrap-head-min');
+                  });
                 }
               } else {
                 $header.removeClass('wrap-head-min');
@@ -95,21 +94,25 @@
           'scrollOverflow': true,
           'fixedElements': '#header',
           'menu': '#header',
+          // 'easing': 'swing',
           'paddingTop': '83px',
           'onLeave': function (index, direction) {
-            noop(direction);
+            $.noop(direction);
             checkMenuChange(index);
           },
           'afterLoad': function (anchorLink, index) {
-            console.log(anchorLink, index);
             checkMenuChange(index);
-          }
+          },
+          'onSlideLeave': function (anchorLink, index, slideIndex, direction) {
+            console.log(anchorLink, index, slideIndex, direction);
+          },
           // 'css3': true
         }
         /*{
           // 'autoScrolling': false,
           // 'paddingTop': '5em',
           'scrollingSpeed': 700,
+          'easing': 'swing',
           'easing': 'easeInQuart',
           'fixedElements': '#header',
           'verticalCentered': false,
@@ -127,7 +130,7 @@
           // afterRender: function () {
           // }
         }*/);
-        noop($header);
+        $.noop($header);
       }
     }
   }
