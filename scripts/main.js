@@ -73,43 +73,54 @@
   if ($.fn.fullpage) {
     if (!Modernizr.touch) {
       if (!supportBlacklist()) {
-        var $header  = $('#header .wrap-head'),
-            checkMenuChange = function (index) {
-              if (index === 1) {
-                $('#header').prependTo('#sec-inicio');
-              }
-              if (index > 1) {
-                if (!$header.is('.wrap-head-min')) {
-                  $header.addClass('wrap-head-min');
-                  $('#header').insertAfter('#superContainer');
-                }
-              } else {
-                $header.removeClass('wrap-head-min').removeClass('wrap-head-home');
-              }
-            };
-        $('#topnav a').each(function (i, item) {
-          $(item).attr('href', item.href.replace('sec-', ''));
+        var $header  = $('#header-absolute'),
+            $headerWrap = $header.find('.wrap-head'),
+            goToHome = false;
+        $('.menu a').each(function (i, item) {
+          $(item).attr('href', item.href.replace('sec-', '')).bind('click', function () {
+            if (i === 0) {
+              $headerWrap.addClass('wrap-head-home');
+              goToHome = true;
+            }
+          });
         });
+        $header.clone().attr('id', 'header-inner').prependTo($('#sec-inicio'));
+        $header.hide();
 
         $.fn.fullpage({
           'anchors': ['inicio', 'cursos', 'nosotros', 'instructores', 'contacto'],
           'slidesColor': ['none', '#3e3e3e', '#3e3e3e', '#3e3e3e', '#ccc'],
           'scrollOverflow': true,
           'scrollingSpeed': 1000,
-          'fixedElements': '#header',
-          'menu': '#header',
+          'fixedElements': '#header-absolute',
+          'menu': '#header-absolute',
           'paddingTop': '83px',
           'onLeave': function (index, direction) {
             $.noop(direction);
-            checkMenuChange(index);
-            if (index > 1 && direction === 'up') {
-              if ($header.is('.wrap-head-home')) {
-                $header.addClass('wrap-head-home');
-              }
+            if ((index === 2 && direction === 'up') || goToHome) {
+              $headerWrap.addClass('wrap-head-home');
+              setTimeout(function () {
+                $header.hide();
+              }, 500);
             }
           },
           'afterLoad': function (anchorLink, index) {
-            checkMenuChange(index);
+            $headerWrap.removeClass('wrap-head-home');
+            if (index === 1) {
+              $header.hide();
+            } else if (index > 1) {
+              goToHome = false;
+              $header.show();
+              $headerWrap.addClass('wrap-head-min');
+            }
+            var indexBlacks = [3, 5]; // Las secciones que tendrá
+            if (indexBlacks.indexOf(index) !== -1) {
+              $header.addClass('darker');
+              $header.find('.logo img').attr('src','images/logo_area51_black.png');
+            } else {
+              $header.removeClass('darker');
+              $header.find('.logo img').attr('src','images/logo_area51.png');
+            }
           },
           'onSlideLeave': function (anchorLink, index, slideIndex, direction) {
             console.log(anchorLink, index, slideIndex, direction);

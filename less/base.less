@@ -259,7 +259,7 @@ a{
         padding: 10px 15px;
     }
 }
-#header{
+header.main{
     //background: url("@{img}img_slide.jpg") no-repeat;
     position: absolute;
     top: 0;
@@ -353,6 +353,7 @@ a{
         float: right;
         margin: 23px 0 0;
         .telefono{
+            .transitions();
             color: #FFF;font-size: 17px;text-align: right; margin: 0 0 33px;display: block;font-weight: bold;
         }
         .list-social{  margin: 0 0 0;
@@ -374,7 +375,6 @@ a{
                         &.yt{background-position: -36px 0;}
                         &.gh{background-position: -73px 0;}
                         &.fb{background-position: -109px 0;}
-
                     }
                 }
             }
@@ -416,9 +416,20 @@ a{
         }
     }
     .wrap-head-home {
-        -webkit-animation: fadeInScrollUp .4s ease-out;
+        -webkit-animation: fadeInScrollUp .6s ease-out;
     }
 }
+
+.logo a img {
+    background: url("@{img}/logo_area51_black.png") no-repeat -9999px -9999px;
+}
+
+header.darker{
+    .nav_menu ul.menu li a, .wrap_telefono_social .telefono{
+        color: #333;
+    }
+}
+
 @-webkit-keyframes scrollDown {
     from { -webkit-transform: translateY(-100px); }
     to { -webkit-transform: translateY(0px); }
@@ -431,6 +442,7 @@ a{
     to {
         -webkit-transform: translateY(-100px);
         opacity: 0;
+        background-color: white;
     }
 }
 
@@ -823,7 +835,7 @@ svg#bigTriangleColor {
 }
 @media only screen and (min-width: 48.000em) { /* About 768px */
 
-    #header{
+    header.main{
         .wrap_telefono_social{
 
             .telefono{float: left;margin: 26px 0 0 0;}
@@ -989,7 +1001,7 @@ svg#bigTriangleColor {
 @media only screen and (min-width: 60.000em) { /* About 960px */
     .tester{background:green;}
 
-    #header{
+    header.main{
         .wrap_telefono_social{margin: 3px 0 0;
             .telefono{float: none;margin: 0;}
             .list-social{margin: 20px 0 0 0;
@@ -1156,7 +1168,7 @@ svg#bigTriangleColor {
 }
 @media only screen and (min-width: 75em) { /* About 1200px */
     .tester{background:blue;}
-    #header{
+    header.main{
         .wrap_telefono_social{margin: 3px 0 0;
             .telefono{float: left;margin: 46px 0 0 0;font-size: 22px;}
             .list-social{margin: 41px 0 0 15px;float: left;
