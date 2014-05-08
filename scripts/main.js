@@ -1,6 +1,35 @@
 'use strict';
-/* globals Modernizr, jQuery, GMaps, window, document, navigator */
+/* globals google, Modernizr, jQuery, GMaps, window, document, navigator */
 (function (Modernizr, $, GMaps, window, document, navigator) {
+  var map = null;
+  var markers = [];
+  function setGoogleMaps() {
+    if (GMaps) {
+      map = new GMaps({
+        div: '#map',
+        lat: -12.043333,
+        lng: -77.028333,
+        enableNewStyle: true
+      });
+      markers.miraflores = map.addMarker({
+        lat: -12.119148,
+        lng: -77.033599,
+        title: 'Miraflores',
+        infoWindow: {
+          content: '<div class="scrollFix">' + 'Hola Mundo<br>K ase?' + '</div>'
+        }
+      });
+      markers.villa = map.addMarker({
+        lat: -12.204662,
+        lng: -77.013107,
+        title: 'Villa',
+        infoWindow: {
+          content: '<div class="scrollFix">' + 'Hola Mundo<br>K ase?' + '</div>'
+        }
+      });
+      map.fitZoom();
+    }
+  }
   function supportBlacklist() {
     var w = window,
       ua = navigator.userAgent,
@@ -30,15 +59,6 @@
     }
     return false;
   }
-
-  // if (GMaps) {
-  //   new GMaps({
-  //     div: '#map',
-  //     lat: -12.043333,
-  //     lng: -77.028333,
-  //     enableNewStyle: true
-  //   });
-  // }
 
   if ($.fn.slitslider) {
     var Page = (function () {
@@ -75,8 +95,11 @@
       if (!supportBlacklist()) {
         var $header  = $('#header-absolute'),
             $headerWrap = $header.find('.wrap-head'),
+            $menuItems = $('.menu a'),
             goToHome = false;
-        $('.menu a').each(function (i, item) {
+
+        $menuItems.eq(0).parent().addClass('disabled');
+        $menuItems.each(function (i, item) {
           $(item).attr('href', item.href.replace('sec-', '')).bind('click', function () {
             if (i === 0) {
               $headerWrap.addClass('wrap-head-home');
@@ -103,53 +126,86 @@
                 $header.hide();
               }, 500);
             }
+            $('#map').empty().removeAttr('style');
+            map = null;
+            setTimeout(function () {
+              showContactInfo();
+            }, 900);
           },
           'afterLoad': function (anchorLink, index) {
             $headerWrap.removeClass('wrap-head-home');
             if (index === 1) {
               $header.hide();
             } else if (index > 1) {
+              $menuItems.eq(0).parent().removeClass('disabled');
               goToHome = false;
               $header.show();
               $headerWrap.addClass('wrap-head-min');
+              if (anchorLink === 'contacto') {
+                setGoogleMaps();
+              }
             }
-            var indexBlacks = [3, 5]; // Las secciones que tendrá
+            var indexBlacks = [3, 5]; // Las secciones se oscurecerá el menu
             if (indexBlacks.indexOf(index) !== -1) {
               $header.addClass('darker');
-              $header.find('.logo img').attr('src','images/logo_area51_black.png');
+              $header.find('.logo img').attr('src', 'images/logo_area51_black.png');
             } else {
               $header.removeClass('darker');
-              $header.find('.logo img').attr('src','images/logo_area51.png');
+              $header.find('.logo img').attr('src', 'images/logo_area51.png');
             }
           },
-          'onSlideLeave': function (anchorLink, index, slideIndex, direction) {
-            console.log(anchorLink, index, slideIndex, direction);
+          afterSlideLoad: function (anchorLink, index, slideAnchor, slideIndex) {
+            console.log(anchorLink, index, slideAnchor, slideIndex);
+            $('#nav-dots span:eq(' + slideIndex + ')').addClass('nav-dot-current').siblings().removeClass('nav-dot-current');
           }
-        }
-        /*{
-          // 'autoScrolling': false,
-          // 'paddingTop': '5em',
-          'scrollingSpeed': 700,
-          'easing': 'swing',
-          'easing': 'easeInQuart',
-          'fixedElements': '#header',
-          'css3': true,
-          'verticalCentered': false,
-          'slidesColor': ['none', '#3e3e3e', '#3e3e3e', '#3e3e3e', '#3e3e3e'],
-          // 'anchors': ['inicio', 'cursos', 'nosotros', 'instructors', 'contact'],
-          // 'menu': '#header',
-          'navigation': false,
-          'scrollOverflow': true,
-          // 'afterLoad': function (anchorLink, index) {
-          // },
-          'onLeave': function (index, direction) {
-            console.log(index, direction);
-          },
-          // afterRender: function () {
-          // }
-        }*/);
+        });
+        $('#sec-inicio .slide').each(function (i) {
+          var $dot = $('<span class="toSlide" data-index="' + (i+1) + '"/>');
+          $('#nav-dots').append($dot);
+        });
+        // Course Tabs
+        $('.wrap-tabs').each(function () {
+          var $tabs = $(this),
+              $tabsContent = $tabs.find('.tab-content'),
+              tabsParentContainerHeight = $tabs.find('.wrap-tab-content').height(),
+              tabSelectedId = null,
+              tabCurrent = '';
+          $tabsContent.css('height', tabsParentContainerHeight).filter(':not(.active)').slideUp();
+          $tabs.find('.list_tab li a').bind('click', function (event) {
+            event.preventDefault();
+            tabSelectedId = $(this).attr('href').split('#');
+            tabCurrent = '#' + tabSelectedId[tabSelectedId.length - 1];
+            if (!$(tabCurrent).is('.active')) {
+              $tabsContent.filter('.active').slideUp().removeClass('active');
+              $tabsContent.filter(tabCurrent).slideDown().addClass('active');
+              $(this).parent().siblings().find('a').removeClass('active');
+              $(this).addClass('active');
+            }
+          });
+        });
+
         $.noop($header);
+      } else {
+        setGoogleMaps();
       }
     }
   }
+
+  // See Maps
+  function showContactInfo() {
+    $('#return-contacto').fadeOut();
+    $('#contact-content, #map-overlay').fadeIn();
+  }
+  $('#return-contacto').bind('click', function () {
+    showContactInfo();
+  }).hide();
+  $('.see-map').bind('click', function (event) {
+    if (!supportBlacklist()) {
+      event.preventDefault();
+      var selected = $(this).parents('.tab-content').attr('id').split('direccion-')[1];
+      google.maps.event.trigger(markers[selected], 'click');
+      $('#contact-content, #map-overlay').fadeOut();
+      $('#return-contacto').fadeIn();
+    }
+  });
 })(Modernizr, jQuery, GMaps, window, document, navigator);

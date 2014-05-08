@@ -47,17 +47,17 @@
         <li data-menuanchor="inicio" class="active"><a href="#sec-inicio">Inicio</a></li>
         <li data-menuanchor="cursos"><a href="#sec-cursos">Cursos</a></li>
         <li data-menuanchor="nosotros"><a href="#sec-nosotros">Nosotros</a></li>
-        <li data-menuanchor="instructors"><a href="#sec-instructores">Instructores</a></li>
-        <li data-menuanchor="contact"><a href="#sec-contacto">Contacto</a></li>
+        <li data-menuanchor="instructores"><a href="#sec-instructores">Instructores</a></li>
+        <li data-menuanchor="contacto"><a href="#sec-contacto">Contacto</a></li>
       </ul>
     </nav>
     <div class="wrap_telefono_social"> <span class="telefono">(+511) 447-0162</span>
       <div class="list-social">
         <ul>
+          <li><a class="fb" href="#">Area51 en Facebook</a></li>
           <li><a class="tw" href="#">Area51 en Twitter</a></li>
           <li><a class="yt" href="#">Area51 en Youtube</a></li>
-          <li><a class="gh" href="#">Area51 en Github</a></li>
-          <li class="last"><a class="fb" href="#">Area51 en Facebook</a></li>
+          <li class="last"><a class="gh" href="#">Area51 en Github</a></li>
         </ul>
       </div>
     </div>
@@ -97,7 +97,7 @@
     <p>Seamlessly disseminate best-of-breed vortals through user-centric methodologies. Dramatically disintermediate e-business imperatives with ethical opportunities.</p>
   </div>
 </div>
-<nav id="nav-dots" class="nav-dots"> <span class="nav-dot-current"></span> <span></span> <span></span> <span></span> </nav>
+<nav id="nav-dots" class="nav-dots"> <!--span class="nav-dot-current"></span> <span></span> <span></span> <span></span--> </nav>
 <div id="certificados" class="w-fluid">
   <div class="tr"></div>
   <div class="cf w-inner">
@@ -132,14 +132,14 @@
       <div class="wrap-tabs">
         <div class="list_tab">
           <ul>
-            <li> <a href="#" class="active"> <span class="ico web"></span> <span class="text">WEB</span> </a> </li>
-            <li> <a href="#" class=""> <span class="ico mobile"></span> <span class="text">MOBILE</span> </a> </li>
-            <li> <a href="#" class=""> <span class="ico prod3d"></span> <span class="text">3D & PRODUCCION</span> </a> </li>
-            <li class="last"> <a href="#" class=""> <span class="ico video"></span> <span class="text">VIDEO JUEGOS</span> </a> </li>
+            <li> <a href="#cursos-web" class="active"> <span class="ico web"></span> <span class="text">WEB</span> </a> </li>
+            <li> <a href="#cursos-mobile" class=""> <span class="ico mobile"></span> <span class="text">MOBILE</span> </a> </li>
+            <li> <a href="#cursos-3dyprod" class=""> <span class="ico prod3d"></span> <span class="text">3D & PRODUCCION</span> </a> </li>
+            <li class="last"> <a href="#cursos-juegos" class=""> <span class="ico video"></span> <span class="text">VIDEO JUEGOS</span> </a> </li>
           </ul>
         </div>
         <div class="wrap-tab-content">
-          <div class="tab-content active">
+          <div id="cursos-web" class="tab-content active">
             <div class="wrap-courses-logo">
               <div class="item-logo active">
                 <figure> <img alt="" src="images/logo_course_1.jpg" />
@@ -177,9 +177,24 @@
               <p>Practice what you've learned through quizzes and interactive Code Challenges. This style of practicing will allow you to retain information you've learned so you can apply it to your own future projects. You'll earn badges as you journey through our extensive library of courses. These badges are an indicator of what skills you currently possess and are viewable by anyone online.</p>
             </div>
           </div>
-          <div class="tab-content"></div>
-          <div class="tab-content"></div>
-          <div class="tab-content"></div>
+          <div id="cursos-mobile" class="tab-content">
+            <div class="detail">
+              <h3>Learn Mobile</h3>
+              <p>Practice what you've learned through quizzes and interactive Code Challenges. This style of practicing will allow you to retain information you've learned so you can apply it to your own future projects. You'll earn badges as you journey through our extensive library of courses. These badges are an indicator of what skills you currently possess and are viewable by anyone online.</p>
+            </div>
+          </div>
+          <div id="cursos-3dyprod" class="tab-content">
+            <div class="detail">
+              <h3>Learn 3D and Production</h3>
+              <p>Practice what you've learned through quizzes and interactive Code Challenges. This style of practicing will allow you to retain information you've learned so you can apply it to your own future projects. You'll earn badges as you journey through our extensive library of courses. These badges are an indicator of what skills you currently possess and are viewable by anyone online.</p>
+            </div>
+          </div>
+          <div id="cursos-juegos" class="tab-content">
+            <div class="detail">
+              <h3>Learn Game development</h3>
+              <p>Practice what you've learned through quizzes and interactive Code Challenges. This style of practicing will allow you to retain information you've learned so you can apply it to your own future projects. You'll earn badges as you journey through our extensive library of courses. These badges are an indicator of what skills you currently possess and are viewable by anyone online.</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -291,6 +306,7 @@
   <section id="sec-contacto" class="section w-fluid">
     <div id="map"></div>
     <div id="map-overlay" style=""></div>
+    <button id="return-contacto" class="btn">Regresar a la información de contacto</button>
     <div id="contact-content">
       <div class="cf w-inner">
         <div class="wrap-form">
@@ -322,22 +338,51 @@
             </div>
           </form>
         </div>
-        <div class="map-direction">
-          <div class="head">
-            <h2>DIRECCIÓN</h2>
-            <p>Recavarren 103 Of. 1204 Miraflores, Lima</p>
-          </div>
-          <div class="block-direction">
-            <h4>Referencia</h4>
-            <p>Esquina cuadra 4 de Av. Pardo</p>
-          </div>
-          <div class="block-direction">
-            <h4>TELÉFONOS</h4>
-            <p>(51-1) 447-0162</p>
-          </div>
-          <div class="block-direction">
-            <h4>CORREO</h4>
-            <p>info@area51.pe</p>
+        <div class="map-direction wrap-tabs">
+          <ul  class="head list_tab">
+            <li>Estamos en: </li>
+            <li><a class="active" href="#direccion-miraflores">Miraflores</a></li>
+            <li><a href="#direccion-villa">Chorrillos</a></li>
+          </ul>
+          <div class="tab-container">
+            <div id="direccion-miraflores" class="tab-content active">
+              <div class="block-direction">
+                <h4>Dirección</h4>
+                <p>Recavarren 103 Of. 1204 Miraflores, Lima</p>
+              </div>
+              <div class="block-direction">
+                <h4>Referencia</h4>
+                <p>Esquina cuadra 4 de Av. Pardo</p>
+              </div>
+              <div class="block-direction">
+                <h4>TELÉFONOS</h4>
+                <p>(51-1) 447-0162</p>
+              </div>
+              <div class="block-direction">
+                <h4>CORREO</h4>
+                <p>info@area51.pe</p>
+                <a class="see-map btn" target="_blank" href="https://www.google.com/maps/?q=Jose+Pardo+Miraflroes&amp;ll=-12.119148,-77.033599">Ver el mapa</a>
+              </div>
+            </div>
+            <div id="direccion-villa" class="tab-content">
+              <div class="block-direction">
+                <h4>Dirección</h4>
+                <p>Recavarren 103 Of. 1204 Miraflores, Lima</p>
+              </div>
+              <div class="block-direction">
+                <h4>Referencia</h4>
+                <p>Esquina cuadra 4 de Av. Pardo</p>
+              </div>
+              <div class="block-direction">
+                <h4>TELÉFONOS</h4>
+                <p>(51-1) 447-0162</p>
+              </div>
+              <div class="block-direction">
+                <h4>CORREO</h4>
+                <p>info@area51.pe</p>
+                <a class="see-map btn" target="_blank" href="https://www.google.com/maps/?q=Alameda+Los+Cedros&amp;ll=-12.204662,-77.013107">Ver el mapa</a>
+              </div>
+            </div>
           </div>
           <div class="list-social">
             <ul>

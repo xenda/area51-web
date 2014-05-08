@@ -1,6 +1,7 @@
 @img: '../images';
 @tcolor: #535353;
 @tgray: #343434;
+@lgray: #717171;
 @normal: #97959c;
 @hover: #785778;
 @blue: #6DCFF6;
@@ -182,6 +183,11 @@ body { margin: 0; font-size: 1em;  font-family: 'Monda', sans-serif, arial; }
 .controlArrow{ display: block; }
 .slides .controlArrow{ display: none; }
 .nav-dots { bottom: 0; top: 60%; }
+.scrollFix {
+    line-height: 1.35;
+    overflow: hidden;
+    white-space: nowrap;
+}
 input[type="text"], select, textarea{
     border: 1px solid #fff;
     padding: 10px;
@@ -730,8 +736,20 @@ svg#bigTriangleColor {
     .w-inner{
         padding: 0 0;
     }
-    #map{width: 100%;height: 100%; position: absolute;left: 0;top: 0; z-index: 10; display: none; }
-    #map-overlay{ background-color:rgba(255,255,255,0.5); width:100%; height:100%; position:absolute; z-index:11; }
+    #map{width: 100%;height: 100%; position: absolute;left: 0;top: 0; z-index: 10; }
+    #map-overlay{
+        width:100%;
+        height:100%;
+        position:absolute;
+        z-index:11;
+    }
+    #return-contacto{
+        position: absolute;
+        right: 3%;
+        bottom: 5%;
+        z-index:11;
+    }
+    #map-overlay{ background-color:rgba(255,255,255,0.5); }
     #contact-content{
         position:  relative;
         z-index: 12;
@@ -756,7 +774,7 @@ svg#bigTriangleColor {
     .map-direction{
         margin: 25px;
         background: @blue;
-        padding: 15px;
+        padding-bottom: 15px;
         height: auto;
         overflow: hidden;
         .head{
@@ -766,12 +784,42 @@ svg#bigTriangleColor {
             p{color: #fff;font-size: 14px;line-height: 24px;font-weight: bold;}
         }
         .block-direction{
-            margin: 0 0 35px;
+            margin: 0 0 30px;
             h4{font-size: 16px;font-weight: bold;color: #3e3e3e;text-transform: uppercase;margin: 0 0 5px;}
             p{margin: 0;color: #fff;font-size: 16px;}
         }
-
+        .list_tab{
+            margin: 0;
+            background-color: #d0eaf4;
+            font-size: 1.1em;
+            border-bottom: solid 5px @bluedark;
+            margin-bottom: 15px;
+            padding: 0 5px;
+            li{
+                display: inline-block;
+                margin: 0;
+                a{
+                    display: block;
+                    padding: 20px 10px;
+                    color: @tgray;
+                    &.active{
+                        background-color: #FFF;
+                        color: @bluedark;
+                    }
+                }
+            }
+        }
+        .tab-content{
+            padding: 0 15px;
+            a.see-map{
+                background-image: url("@{img}/map_ico.png");
+                background-repeat: no-repeat;
+                background-position: 90% center;
+                background-size: 18px;
+            }
+        }
         .list-social{
+            padding: 0 15px;
             ul{
                 li{
                     a{
@@ -841,7 +889,9 @@ svg#bigTriangleColor {
             .telefono{float: left;margin: 26px 0 0 0;}
             .list-social{  margin: 20px 0 0 20px;float: left;
                 ul{
-                    li{float: left;margin-right: 10px;
+                    li{
+                        float: left;
+                        margin-right: 10px;
                         a{width: 37px;height: 37px;display: block;background: url("@{img}/ico_social_contact.png") no-repeat 0 0;
                             &.tw{background-position: -150px 0;}
                             &.yt{background-position: -196px 0;}
@@ -863,11 +913,22 @@ svg#bigTriangleColor {
             ul.menu{
                 background: none;
                 display: inline-block;
-                li{display: inline-block;margin: 0 5px;
-                    &:hover, &.selected{
+                li{
+                    display: inline-block;
+                    margin: 0 5px;
+                    &.disabled{
+                        opacity: 0;
+                        visibility: hidden;
+                        text-indent: -9999em;
+                    }
+                    &:hover, &.active{
                         a{
                             color: @blue;
                             border-color: @blue;
+                            /*text-shadow: 0 1px 1px rgba(0,0,0,0.7);
+                            -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, .4);
+                            -moz-box-shadow: 1px 1px 3px rgba(0, 0, 0, .4);
+                            box-shadow: 1px 1px 3px rgba(0, 0, 0, .4);*/
                         }
                     }
                     a{
@@ -879,13 +940,22 @@ svg#bigTriangleColor {
             }
         }
     }
-
+    .controlArrow{
+        .transitions();
+    }
+    .controlArrow.prev:hover{
+        border-right-color: @blue;
+    }
+    .controlArrow.next:hover{
+        border-left-color: @blue;
+    }
     #sec-inicio .wrap_slide {
         margin: 0 0;
         h2{
             br{display: none;}
         }
     }
+
     .sl-slides-wrapper .sl-slide-inner .w-inner {
         padding: 225px 20px 90px;max-width: 550px;
     }
@@ -1053,14 +1123,25 @@ svg#bigTriangleColor {
                         margin-right: 0;
                         border-bottom: 1px solid #3E3E3E;
                         a{
-                            padding: 60px 0 25px 0;
+                            padding: 50px 0 30px 55px;
                             height: auto;
-                            .text{display: block;}
+                            text-align: left;
+                            .text{display: inline-block;}
                             .ico{
-                                top: 35%;
+                                top: 55%;
+                                left: 30px;
                             }
-                            &.active, &:hover{
-                                background: #fff url("@{img}/arrow.jpg") center 90px no-repeat;
+                            &:hover{
+                                .text{
+                                    color: #CCC;
+                                }
+                                background: #717171;
+                            }
+                            &.active{
+                                .text{
+                                    color: #3E3E3E;
+                                }
+                                background: #fff url("@{img}/arrow.jpg") right -25px no-repeat;
                             }
                         }
                         &.last{border-bottom: none;}
@@ -1086,6 +1167,11 @@ svg#bigTriangleColor {
     }
     #sec-contacto{
         .text{width: 60%;}
+        a.see-map{
+            float: right;
+            margin-top: -40px;
+            padding-right: 13%;
+        }
     }
     #alianzas{text-align: center;
         .item-alianza{width: 24%; }
@@ -1195,3 +1281,11 @@ svg#bigTriangleColor {
 
 
 .sl-content, .sl-slide-vertical .sl-slide-inner{ background: none!important; }
+.nav-dots span{
+    .transitions();
+    &.nav-dot-current{
+        -webkit-transform: scale(1.3) rotate(45deg);
+           -moz-transform: scale(1.3) rotate(45deg);
+                transform: scale(1.3) rotate(45deg);
+    }
+}
