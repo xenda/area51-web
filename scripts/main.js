@@ -119,7 +119,7 @@
       $.fn.fullpage({
         'anchors': ['inicio', 'cursos', 'nosotros', 'instructores', 'contacto'],
         'slidesColor': ['none', '#3e3e3e', '#3e3e3e', '#3e3e3e', '#ccc'],
-        'scrollingSpeed': 1000,
+        'scrollingSpeed': 800,
         'fixedElements': '#header-absolute',
         'menu': '#header-absolute',
         'paddingTop': '83px',
