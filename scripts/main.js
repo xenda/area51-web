@@ -120,6 +120,7 @@
         'anchors': ['inicio', 'cursos', 'nosotros', 'instructores', 'contacto'],
         'slidesColor': ['none', '#3e3e3e', '#3e3e3e', '#3e3e3e', '#ccc'],
         'scrollingSpeed': 800,
+        'easing': 'easeInOutCirc',
         'fixedElements': '#header-absolute',
         'menu': '#header-absolute',
         'paddingTop': '83px',
