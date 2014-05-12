@@ -213,8 +213,8 @@
 
 
     $(document).bind('scroll', function () {
-        checkOffset();
-      });
+      checkOffset();
+    });
   }
   // Course Tabs
   $('.wrap-tabs').each(function () {
@@ -251,6 +251,7 @@
       if (!supportBlacklist()) {
         event.preventDefault();
         var selected = $(this).parents('.tab-content').attr('id').split('direccion-')[1];
+        map.setCenter(markers[selected].getPosition());
         google.maps.event.trigger(markers[selected], 'click');
         $mapOverlay.fadeOut();
         $('#return-contacto').fadeIn();
