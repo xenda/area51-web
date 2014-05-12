@@ -5,17 +5,12 @@
  *
  * Copyright (C) 2013 alvarotrigo.com - A project by Alvaro Trigo
  */
-html, body {
-    margin: 0;
-    padding: 0;
-	overflow:hidden;
-}
 #superContainer {
     height: 100%;
     position: relative;
-	
+
 	/* Touch detection for Windows 8 */
-	-ms-touch-action: none; 
+	-ms-touch-action: none;
 }
 .section {
     position: relative;
@@ -23,14 +18,15 @@ html, body {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
-.slide {
+html.fullpage .slide {
     float: left;
+    display: block!important;
 }
-.slide, .slidesContainer {
+html.fullpage .slide, html.fullpage .slidesContainer {
     height: 100%;
     display: block;
 }
-.slides {
+html.fullpage .slides {
     height: 100%;
     overflow: hidden;
     position: relative;
@@ -49,11 +45,11 @@ html, body {
     width: 100%;
     height: 100%;
 }
-.slidesContainer {
+html.fullpage .slidesContainer {
     float: left;
     position: relative;
 }
-.controlArrow {
+html.fullpage .controlArrow {
     position: absolute;
     top: 50%;
     cursor: pointer;

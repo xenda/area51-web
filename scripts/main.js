@@ -11,7 +11,7 @@
         lng: -77.028333,
         enableNewStyle: true
       });
-      markers.miraflores = map.addMarker({
+      markers.miraflores = map.addMarker({ // GMarker de Miraflores
         lat: -12.119148,
         lng: -77.033599,
         title: 'Miraflores',
@@ -19,7 +19,7 @@
           content: '<div class="scrollFix">' + 'Hola Mundo<br>K ase?' + '</div>'
         }
       });
-      markers.villa = map.addMarker({
+      markers.villa = map.addMarker({ // GMarker de Villa
         lat: -12.204662,
         lng: -77.013107,
         title: 'Villa',
@@ -29,6 +29,10 @@
       });
       map.fitZoom();
     }
+  }
+  function isMobile() {
+    return (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i).test(navigator.userAgent);
+    // return true;
   }
   function supportBlacklist() {
     var w = window,
@@ -91,121 +95,165 @@
     Page.init();
   }
   if ($.fn.fullpage) {
-    if (!Modernizr.touch) {
-      if (!supportBlacklist()) {
-        var $header  = $('#header-absolute'),
-            $headerWrap = $header.find('.wrap-head'),
-            $menuItems = $('.menu a'),
-            goToHome = false;
+    // Si el navegador está registrado en el blacklist, no salta el script
+    var $header  = $('#header-absolute'),
+        $headerWrap = $header.find('.wrap-head'),
+        $menuItems = $('.menu a'),
+        goToHome = false;
 
-        $menuItems.eq(0).parent().addClass('disabled');
-        $menuItems.each(function (i, item) {
-          $(item).attr('href', item.href.replace('sec-', '')).bind('click', function () {
-            if (i === 0) {
-              $headerWrap.addClass('wrap-head-home');
-              goToHome = true;
-            }
-          });
-        });
-        $header.clone().attr('id', 'header-inner').prependTo($('#sec-inicio'));
-        $header.hide();
+    $header.clone().attr('id', 'header-inner').prependTo($('#sec-inicio'));
+    $header.hide();
 
-        $.fn.fullpage({
-          'anchors': ['inicio', 'cursos', 'nosotros', 'instructores', 'contacto'],
-          'slidesColor': ['none', '#3e3e3e', '#3e3e3e', '#3e3e3e', '#ccc'],
-          'scrollOverflow': true,
-          'scrollingSpeed': 1000,
-          'fixedElements': '#header-absolute',
-          'menu': '#header-absolute',
-          'paddingTop': '83px',
-          'onLeave': function (index, direction) {
-            $.noop(direction);
-            if ((index === 2 && direction === 'up') || goToHome) {
-              $headerWrap.addClass('wrap-head-home');
-              setTimeout(function () {
-                $header.hide();
-              }, 500);
-            }
-            $('#map').empty().removeAttr('style');
-            map = null;
-            setTimeout(function () {
-              showContactInfo();
-            }, 900);
-          },
-          'afterLoad': function (anchorLink, index) {
-            $headerWrap.removeClass('wrap-head-home');
-            if (index === 1) {
-              $header.hide();
-            } else if (index > 1) {
-              $menuItems.eq(0).parent().removeClass('disabled');
-              goToHome = false;
-              $header.show();
-              $headerWrap.addClass('wrap-head-min');
-              if (anchorLink === 'contacto') {
-                setGoogleMaps();
-              }
-            }
-            var indexBlacks = [3, 5]; // Las secciones se oscurecerá el menu
-            if (indexBlacks.indexOf(index) !== -1) {
-              $header.addClass('darker');
-              $header.find('.logo img').attr('src', 'images/logo_area51_black.png');
-            } else {
-              $header.removeClass('darker');
-              $header.find('.logo img').attr('src', 'images/logo_area51.png');
-            }
-          },
-          afterSlideLoad: function (anchorLink, index, slideAnchor, slideIndex) {
-            console.log(anchorLink, index, slideAnchor, slideIndex);
-            $('#nav-dots span:eq(' + slideIndex + ')').addClass('nav-dot-current').siblings().removeClass('nav-dot-current');
+    if (!supportBlacklist() && !isMobile()) {
+      $('html').addClass('fullpage');
+      $menuItems.eq(0).parent().addClass('disabled');
+      $menuItems.each(function (i, item) {
+        $(item).attr('href', item.href.replace('sec-', '')).bind('click', function () {
+          if (i === 0) {
+            $headerWrap.addClass('wrap-head-home');
+            goToHome = true;
           }
         });
-        $('#sec-inicio .slide').each(function (i) {
-          var $dot = $('<span class="toSlide" data-index="' + (i+1) + '"/>');
-          $('#nav-dots').append($dot);
-        });
-        // Course Tabs
-        $('.wrap-tabs').each(function () {
-          var $tabs = $(this),
-              $tabsContent = $tabs.find('.tab-content'),
-              tabsParentContainerHeight = $tabs.find('.wrap-tab-content').height(),
-              tabSelectedId = null,
-              tabCurrent = '';
-          $tabsContent.css('height', tabsParentContainerHeight).filter(':not(.active)').slideUp();
-          $tabs.find('.list_tab li a').bind('click', function (event) {
-            event.preventDefault();
-            tabSelectedId = $(this).attr('href').split('#');
-            tabCurrent = '#' + tabSelectedId[tabSelectedId.length - 1];
-            if (!$(tabCurrent).is('.active')) {
-              $tabsContent.filter('.active').slideUp().removeClass('active');
-              $tabsContent.filter(tabCurrent).slideDown().addClass('active');
-              $(this).parent().siblings().find('a').removeClass('active');
-              $(this).addClass('active');
-            }
-          });
-        });
+      });
 
-        $.noop($header);
-      } else {
-        setGoogleMaps();
-      }
+      $.fn.fullpage({
+        'anchors': ['inicio', 'cursos', 'nosotros', 'instructores', 'contacto'],
+        'slidesColor': ['none', '#3e3e3e', '#3e3e3e', '#3e3e3e', '#ccc'],
+        'scrollingSpeed': 1000,
+        'fixedElements': '#header-absolute',
+        'menu': '#header-absolute',
+        'paddingTop': '83px',
+        'touchSensitivity': 10,
+        'autoScrolling': true,
+        'scrollOverflow': true,
+        'onResize': function (w, h) {
+          // console.log('resized', w, h);
+          if (h < 680) {
+            $.fn.fullpage.setAutoScrolling(false);
+            $.fn.fullpage.setAllowScrolling(false);
+          } else {
+            $.fn.fullpage.setAutoScrolling(true);
+            $.fn.fullpage.setAllowScrolling(true);
+          }
+        },
+        'onLeave': function (index, direction) {
+          $.noop(direction);
+          if ((index === 2 && direction === 'up') || goToHome) {
+            $headerWrap.addClass('wrap-head-home');
+            setTimeout(function () {
+              $header.hide();
+            }, 500);
+          }
+          $('#map').empty().removeAttr('style');
+          map = null;
+          setTimeout(function () {
+            showContactInfo();
+          }, 900);
+        },
+        'afterLoad': function (anchorLink, index) {
+          $headerWrap.removeClass('wrap-head-home');
+          if (index === 1) {
+            $header.hide();
+          } else if (index > 1) {
+            $menuItems.eq(0).parent().removeClass('disabled');
+            goToHome = false;
+            $header.show();
+            $headerWrap.addClass('wrap-head-min');
+            if (anchorLink === 'contacto') {
+              setGoogleMaps();
+            }
+          }
+          var indexBlacks = [3, 5]; // Las secciones se oscurecerá el menu
+          if (indexBlacks.indexOf(index) !== -1) {
+            $header.addClass('darker');
+            $header.find('.logo img').attr('src', 'images/logo_area51_black.png');
+          } else {
+            $header.removeClass('darker');
+            $header.find('.logo img').attr('src', 'images/logo_area51.png');
+          }
+        },
+        afterSlideLoad: function (anchorLink, index, slideAnchor, slideIndex) {
+          console.log(anchorLink, index, slideAnchor, slideIndex);
+          $('#nav-dots span:eq(' + slideIndex + ')').addClass('nav-dot-current').siblings().removeClass('nav-dot-current');
+        }
+      });
+      $.noop($header);
+    } else {
+      setGoogleMaps();
     }
   }
-
   // See Maps
+  var $mapOverlay = $('#contact-content, #map-overlay'),
+      $navbarBtn = $('.navbar-toggle'),
+      $mainFooter = $('#main-footer');
   function showContactInfo() {
     $('#return-contacto').fadeOut();
-    $('#contact-content, #map-overlay').fadeIn();
+    $mapOverlay.fadeIn();
   }
-  $('#return-contacto').bind('click', function () {
-    showContactInfo();
-  }).hide();
-  $('.see-map').bind('click', function (event) {
-    if (!supportBlacklist()) {
-      event.preventDefault();
-      var selected = $(this).parents('.tab-content').attr('id').split('direccion-')[1];
-      google.maps.event.trigger(markers[selected], 'click');
-      $('#contact-content, #map-overlay').fadeOut();
-      $('#return-contacto').fadeIn();
+
+  function checkOffset() {
+    if ($navbarBtn.height() + $navbarBtn.offset().top > 70) {
+      $navbarBtn.css({'position': 'fixed', 'top': '10px'});
+    } else {
+      $navbarBtn.css({'position': 'relative', 'top': 'auto'});
     }
+  }
+
+  $('#sec-inicio .slide').each(function (i) {
+    var $dot = $('<span class="toSlide" data-index="' + (i + 1) + '"/>');
+    $('#nav-dots').append($dot);
   });
+
+  if (isMobile()) {
+    $('#nav-dots').find('.toSlide').bind('click', function () {
+      var slideIndex = parseInt($(this).data('index'), 10);
+      $('#nav-dots span:eq(' + (slideIndex - 1) + ')').addClass('nav-dot-current').siblings().removeClass('nav-dot-current');
+      $('#sec-inicio .slide').hide().removeClass('active').filter(':eq(' + (slideIndex - 1) + ')').show().addClass('active');
+    }).filter(':eq(0)').trigger('click');
+
+
+    $(document).bind('scroll', function () {
+        checkOffset();
+      });
+  }
+  // Course Tabs
+  $('.wrap-tabs').each(function () {
+    var $tabs = $(this),
+        $tabsContent = $tabs.find('.tab-content'),
+        tabsParentContainerHeight = $tabs.find('.wrap-tab-content').height(),
+        tabSelectedId = null,
+        tabCurrent = '';
+    if (!isMobile()) {
+      $tabsContent.css('height', tabsParentContainerHeight);
+    }
+    $tabsContent.filter(':not(.active)').slideUp();
+    $tabs.find('.list_tab li a').bind('click', function (event) {
+      event.preventDefault();
+      tabSelectedId = $(this).attr('href').split('#');
+      tabCurrent = '#' + tabSelectedId[tabSelectedId.length - 1];
+      if (!$(tabCurrent).is('.active')) {
+        $tabsContent.filter('.active').slideUp().removeClass('active');
+        $tabsContent.filter(tabCurrent).slideDown().addClass('active');
+        $(this).parent().siblings().find('a').removeClass('active');
+        $(this).addClass('active');
+      }
+    });
+  });
+
+  $('#return-contacto')
+    .bind('click', function () {
+      showContactInfo();
+    })
+    .hide();
+
+  $('.see-map')
+    .bind('click', function (event) {
+      if (!supportBlacklist()) {
+        event.preventDefault();
+        var selected = $(this).parents('.tab-content').attr('id').split('direccion-')[1];
+        google.maps.event.trigger(markers[selected], 'click');
+        $mapOverlay.fadeOut();
+        $('#return-contacto').fadeIn();
+      }
+    });
 })(Modernizr, jQuery, GMaps, window, document, navigator);
