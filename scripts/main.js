@@ -258,4 +258,15 @@
         $('#return-contacto').fadeIn();
       }
     });
+
+  $(document).ready(function() {
+    wow = new WOW(
+      {
+        boxClass:     'wow',      // default
+        animateClass: 'animated', // default
+        offset:       0          // default
+      }
+    )
+    WOW.init();
+  });
 })(Modernizr, jQuery, GMaps, window, document, navigator);
