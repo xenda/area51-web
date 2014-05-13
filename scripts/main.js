@@ -201,7 +201,7 @@
   }
 
   $('#sec-inicio .slide').each(function (i) {
-    var $dot = $('<span class="toSlide" data-index="' + (i + 1) + '"/>');
+    var $dot = $('<span class="toSlide animated wow fadeIn" data-index="' + (i + 1) + '"/>');
     $('#nav-dots').append($dot);
   });
 
