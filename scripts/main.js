@@ -255,6 +255,22 @@
     })
     .hide();
 
+  $('.see-gallery')
+    .bind('click', function(e) {
+      e.preventDefault();
+
+      $('.nosotros-content').fadeOut();
+      $('.nosotros-gallery').fadeIn();
+    });
+
+  $('.return-nosotros')
+    .bind('click', function(e) {
+      e.preventDefault();
+      
+      $('.nosotros-content').fadeIn();
+      $('.nosotros-gallery').fadeOut();
+    });
+
   $('.see-map')
     .bind('click', function (event) {
       if (!supportBlacklist()) {
