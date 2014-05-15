@@ -292,17 +292,16 @@
 
   $(document).on('click', '.gallery .item', function() {
     var image = $(this).find('img'),
-        imageURL = image.attr('src');
+        figure = $(this);
+    var imageURL = $(this).find('img').attr('src');
     imageURL = imageURL.replace('150', galleryWidth);
     imageURL = imageURL.replace('150', galleryHeight);
 
-    var scaleX = galleryWidth / $(this).outerWidth();
-    var scaleY = galleryHeight / $(this).outerHeight();
-
-    image.attr('src', imageURL);
-    $(this).addClass('full').css({
-      width: '100%',
-      height: '100%'
+    image.attr('src', imageURL).addEventListener('load', function() {
+      figure.addClass('full').css({
+        width: '100%',
+        height: '100%'
+      });
     });
   });
 
