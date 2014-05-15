@@ -290,19 +290,33 @@
     });
   });
 
-  $(document).on('click', '.gallery .item', function() {
+  $(document).on('click', '.gallery .item', function(e) {
+    e.stopPropagation();
     var image = $(this).find('img'),
         figure = $(this);
+
     var imageURL = $(this).find('img').attr('src');
     imageURL = imageURL.replace('150', galleryWidth);
     imageURL = imageURL.replace('150', galleryHeight);
 
-    image.attr('src', imageURL).on('load', function() {
-      figure.addClass('full').css({
-        width: '100%',
-        height: '100%'
-      });
+    image.attr('src', imageURL).one('load', function() {
+      figure.addClass('full');
+      image.off('load');
     });
+  });
+
+  $(document).on('click', '.gallery .item.full', function(e) {
+    e.stopPropagation();
+    var image = $(this).find('img'),
+        figure = $(this);
+
+    var imageURL = $(this).find('img').attr('src');
+      imageURL = imageURL.replace(galleryWidth, '150');
+      imageURL = imageURL.replace(galleryHeight, '150');
+
+      figure.removeClass('full');
+      image.off('load');
+      image.attr('src', imageURL);
   });
 
   $('.return-nosotros')
