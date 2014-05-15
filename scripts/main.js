@@ -297,7 +297,7 @@
     imageURL = imageURL.replace('150', galleryWidth);
     imageURL = imageURL.replace('150', galleryHeight);
 
-    image.attr('src', imageURL).addEventListener('load', function() {
+    image.attr('src', imageURL).on('load', function() {
       figure.addClass('full').css({
         width: '100%',
         height: '100%'
