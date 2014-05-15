@@ -3,6 +3,9 @@
 (function (Modernizr, $, GMaps, window, document, navigator) {
   var map = null;
   var markers = [];
+  var galleryWidth,
+      galleryHeight,
+      cachedImages = {};
   function setGoogleMaps() {
     if (GMaps) {
       map = new GMaps({
@@ -75,6 +78,8 @@
         }),
           init = function () {
             initEvents();
+            var marginTop = (screen.height - 500) / 2;
+            $('.gallery').css('margin-top', marginTop);
           },
           initEvents = function () {
             $nav.each(function (i) {
@@ -136,6 +141,9 @@
             $.fn.fullpage.setAutoScrolling(true);
             $.fn.fullpage.setAllowScrolling(true);
           }
+
+          var marginTop = ($('.gallery').parent().outerHeight() - $('.gallery').outerHeight()) / 2;
+          $('.gallery').css('margin-top', marginTop);
         },
         'onLeave': function (index, direction) {
           $.noop(direction);
@@ -261,7 +269,43 @@
 
       $('.nosotros-content').fadeOut();
       $('.nosotros-gallery').fadeIn();
+
+      galleryWidth = $('.gallery').width();
+      galleryHeight = $('.gallery').height();
     });
+
+  $(document).on('mouseover', '.gallery .item', function() {
+    var imageURL = $(this).find('img').attr('src');
+    imageURL = imageURL.replace('150', galleryWidth);
+    imageURL = imageURL.replace('150', galleryHeight);
+
+    if (cachedImages[imageURL] !== undefined) {
+      return;
+    }
+
+    var image = new Image();
+    image.src = imageURL;
+    $(image).one('load', function() {
+      cachedImages[imageURL] = image;
+    });
+  });
+
+  $(document).on('click', '.gallery .item', function() {
+    var image = $(this).find('img'),
+        imageURL = image.attr('src');
+    imageURL = imageURL.replace('150', galleryWidth);
+    imageURL = imageURL.replace('150', galleryHeight);
+
+    var scaleX = galleryWidth / $(this).outerWidth();
+    var scaleY = galleryHeight / $(this).outerHeight();
+
+    image.attr('src', imageURL);
+    $(this).css({
+      '-webkit-transition': 'all 0.8s',
+      '-webkit-transform': 'scale(' + scaleX + ', ' + scaleY + ')',
+      '-webkit-transform-origin': 'center center'
+    });
+  });
 
   $('.return-nosotros')
     .bind('click', function(e) {
