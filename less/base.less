@@ -658,7 +658,7 @@ header.darker{
     bottom: -5px;
 
     .nosotros-gallery {
-        background: rgba(0, 0, 0, 0.8);
+        background: rgba(0, 0, 0, 0.85);
         width: 100%;
         height: 100%;
         position: absolute;
@@ -666,6 +666,23 @@ header.darker{
         top: 0;
         z-index: 10;
         display: none;
+
+        .gallery {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            margin: 100px 0px 0px;
+
+            .item {
+                display: block;
+                float: left;
+
+                img {
+                    display: block;
+                }
+            }
+        }
 
         .return-nosotros {
             position: absolute;
