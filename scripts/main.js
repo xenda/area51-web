@@ -300,10 +300,9 @@
     var scaleY = galleryHeight / $(this).outerHeight();
 
     image.attr('src', imageURL);
-    $(this).css({
-      '-webkit-transition': 'all 0.8s',
-      '-webkit-transform': 'scale(' + scaleX + ', ' + scaleY + ')',
-      '-webkit-transform-origin': 'center center'
+    $(this).addClass('full').css({
+      width: '100%',
+      height: '100%'
     });
   });
 
