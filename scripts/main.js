@@ -293,54 +293,39 @@
   $(document).on('click', '.gallery .item', function(e) {
     e.stopPropagation();
     var image = $(this).find('img'),
-        figure = $(this);
+        figure = $(this),
+        photoBig = $('#photo-big');
+
+    var width = image.width(),
+        height = image.height(),
+        x = Math.ceil((figure.index()) % 7) - 1,
+        y = Math.ceil((figure.index()) / 7) - 1;
+
+    if (x === -1) {
+      x = 6;
+    }
 
     var imageURL = $(this).find('img').attr('src');
     imageURL = imageURL.replace('150', galleryWidth);
     imageURL = imageURL.replace('150', galleryHeight);
 
-    image.attr('src', imageURL).one('load', function() {
-      var x, y;
-      switch(Math.ceil((figure.index() + 1) / 7)) {
-        case 1:
-          y = 30;
-        break;
-        case 2:
-          y = 7;
-        break;
-        case 3:
-          y = -15.4;
-        break;
-      }
-      switch(Math.ceil(figure.index() % 7)) {
-        case 0:
-          x = 72.4;
-        break;
-        case 1:
-          x = 60;
-        break;
-        case 2:
-          x = 23.7;
-        break;
-        case 3:
-          x = 0;
-        break;
-        case 4:
-          x = -23.9;
-        break;
-        case 5:
-          x = -48;
-        break;
-        case 6:
-          x = -72.1;
-        break;
-      }
-
-      figure.addClass('full').css({
-        '-webkit-transform': 'scale(7.01, 7.35) translate3D(' + x + 'px, ' + y + 'px, 616px)'
-      })
-      image.off('load');
+    photoBig.addClass('fadeIn').css({
+      'width': width + 'px',
+      'height': height + 'px',
+      '-webkit-transform': 'translate3d(' + (width * x) + 'px, ' + (height * y) + 'px, 0) scale3d(1.1, 1.1, 1.1)'
     });
+
+    photoBig.css({
+      'background-image': 'url("' + imageURL + '")',
+      'background-position': 'center center',
+      'background-size': '100% 100%',
+    });
+    window.setTimeout(function() {
+      photoBig.css({
+        '-webkit-transform': 'translate3d(' + (width * x) + 'px, ' + (height * y) + 'px, 0) scale3d(7, 3, 1.1)',
+        '-webkit-transition': 'all 0.9s ease'
+      });
+    }, 1000);
   });
 
   $(document).on('click', '.gallery .item.full', function(e) {
