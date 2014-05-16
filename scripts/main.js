@@ -309,9 +309,9 @@
         'background': '#000 url("/images/ajax-loader.gif") no-repeat center center',
         'background-size': 'auto auto'
       }).addClass('fadeIn');
-      photoBig.addClass('active');
 
       window.setTimeout(function() {
+        photoBig.addClass('active');
         photoBig.css({
           'background': 'url("' + imageURL + '") no-repeat center center, #000 url("/images/ajax-loader.gif") no-repeat center center',
           'background-size': '100% 100%, auto auto'
