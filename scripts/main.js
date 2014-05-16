@@ -315,8 +315,8 @@
       imageURL = imageURL.replace(galleryHeight, '150');
 
       figure.removeClass('full');
-      image.off('load');
       image.attr('src', imageURL);
+      image.off('load');
   });
 
   $('.return-nosotros')
