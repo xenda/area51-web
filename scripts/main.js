@@ -318,19 +318,12 @@
       'background-size': 'auto auto'
     }).addClass('fadeIn');
 
-    var img = new Image();
-    img.src = imageURL;
-
-    img.addEventListener('load', function() {
+    window.setTimeout(function() {
       photoBig.css({
         'background': 'url("' + imageURL + '") no-repeat center center, #000 url("/images/ajax-loader.gif") no-repeat center center',
         'background-size': '100% 100%, auto auto'
       });
-
-      window.setTimeout(function() {
-        photoBig;
-      }, 250);
-    });
+    }, 250);
 
     // photoBig.attr('class', 'animated fadeIn').css({
     //   'width': width + 'px',
