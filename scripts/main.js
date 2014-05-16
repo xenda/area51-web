@@ -309,37 +309,60 @@
     imageURL = imageURL.replace('150', galleryWidth);
     imageURL = imageURL.replace('150', galleryHeight);
 
-    photoBig.addClass('fadeIn').css({
+    photoBig.attr('class', 'animated fadeIn').css({
       'width': width + 'px',
-      'height': height + 'px',
-      '-webkit-transform': 'translate3d(' + (width * x) + 'px, ' + (height * y) + 'px, 0) scale3d(1.1, 1.1, 1.1)'
+      'height': height + 'px'
+    }).show().css({
+      '-webkit-transform': 'translate3d(' + (width * x) + 'px, ' + (height * y) + 'px, 0) scale3d(1.1, 1.1, 1.1)',
+      '-webkit-transform-origin': ((x / 6) * 100) + '% ' + ((y / 2) * 100) + '%'
     });
 
     photoBig.css({
-      'background-image': 'url("' + imageURL + '")',
-      'background-position': 'center center',
-      'background-size': '100% 100%',
+      'background': 'url("' + imageURL + '") no-repeat center center',
+      'background-size': '100% 100%'
     });
     window.setTimeout(function() {
-      photoBig.css({
-        '-webkit-transform': 'translate3d(' + (width * x) + 'px, ' + (height * y) + 'px, 0) scale3d(7, 3, 1.1)',
-        '-webkit-transition': 'all 0.9s ease'
-      });
-    }, 1000);
+      if (!photoBig.hasClass('active')) {
+        photoBig.css({
+          '-webkit-transform': 'translate3d(' + (width * x) + 'px, ' + (height * y) + 'px, 0) scale3d(7, 3, 1.1)',
+          '-webkit-transition': 'all 0.9s ease'
+        });
+        photoBig.attr('data-x', x);
+        photoBig.attr('data-y', y);
+
+        window.setTimeout(function() {
+          photoBig.addClass('active');
+        }, 900);
+      }
+    }, 900);
   });
 
-  $(document).on('click', '.gallery .item.full', function(e) {
+  $(document).on('click', '.gallery #photo-big', function(e) {
     e.stopPropagation();
-    var image = $(this).find('img'),
-        figure = $(this);
+    var image = $('.gallery .item').first().find('img'),
+        photoBig = $('#photo-big'),
+        width = image.width(),
+        height = image.height(),
+        x = photoBig.data('x'),
+        y = photoBig.data('y');
 
-    var imageURL = $(this).find('img').attr('src');
-      imageURL = imageURL.replace(galleryWidth, '150');
-      imageURL = imageURL.replace(galleryHeight, '150');
+    if (photoBig.hasClass('active')) {
+      photoBig.css({
+        '-webkit-transform': 'translate3d(' + (width * x) + 'px, ' + (height * y) + 'px, 0) scale3d(1.1, 1.1, 1.1)'
+      });
+    }
 
-      figure.attr('style', null).removeClass('full');
-      image.attr('src', imageURL);
-      image.off('load');
+    window.setTimeout(function() {
+      photoBig.attr('class', 'animated fadeOut')
+
+      window.setTimeout(function() {
+        photoBig.css({
+          'background': 'none',
+          '-webkit-transition': 'none'
+        }).hide();
+        photoBig.removeClass('active');
+      }, 1000);
+    }, 1000);
   });
 
   $('.return-nosotros')
