@@ -300,7 +300,45 @@
     imageURL = imageURL.replace('150', galleryHeight);
 
     image.attr('src', imageURL).one('load', function() {
-      figure.addClass('full');
+      var x, y;
+      switch(Math.ceil((figure.index() + 1) / 7)) {
+        case 1:
+          y = 30;
+        break;
+        case 2:
+          y = 7;
+        break;
+        case 3:
+          y = -15.4;
+        break;
+      }
+      switch(Math.ceil(figure.index() % 7)) {
+        case 0:
+          x = 72.4;
+        break;
+        case 1:
+          x = 60;
+        break;
+        case 2:
+          x = 23.7;
+        break;
+        case 3:
+          x = 0;
+        break;
+        case 4:
+          x = -23.9;
+        break;
+        case 5:
+          x = -48;
+        break;
+        case 6:
+          x = -72.1;
+        break;
+      }
+
+      figure.addClass('full').css({
+        '-webkit-transform': 'scale(7.01, 7.35) translate3D(' + x + 'px, ' + y + 'px, 616px)'
+      })
       image.off('load');
     });
   });
@@ -314,7 +352,7 @@
       imageURL = imageURL.replace(galleryWidth, '150');
       imageURL = imageURL.replace(galleryHeight, '150');
 
-      figure.removeClass('full');
+      figure.attr('style', null).removeClass('full');
       image.attr('src', imageURL);
       image.off('load');
   });
