@@ -310,10 +310,12 @@
     imageURL = imageURL.replace('150', galleryHeight);
 
     photoBig.attr('class', 'animated').hide().css({
-      width: '100%',
-      height: '100%',
-      display: 'block',
-      opacity: 0,
+      'width': '100%',
+      'height': '100%',
+      'display': 'block',
+      'opacity': 0,
+      'background': '#000 url("/images/ajax-loader.gif") no-repeat center center',
+      'background-size': 'auto auto'
     }).addClass('fadeIn');
 
     var img = new Image();
