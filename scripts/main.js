@@ -325,7 +325,7 @@
 
       window.setTimeout(function() {
         photoBig.addClass('active');
-        $(document).off('click', hidePhotoBig);
+        //$(document).off('click', hidePhotoBig);
       }, 10);
 
       window.setTimeout(function() {
