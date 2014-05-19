@@ -312,6 +312,9 @@
 
       window.setTimeout(function() {
         photoBig.addClass('active');
+      }, 150);
+
+      window.setTimeout(function() {
         photoBig.css({
           'background': 'url("' + imageURL + '") no-repeat center center, #000 url("/images/ajax-loader.gif") no-repeat center center',
           'background-size': '100% 100%, auto auto'
