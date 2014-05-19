@@ -290,8 +290,21 @@
     });
   });
 
+  function hidePhotoBig() {
+    console.log('hidePhotoBig');
+    var photoBig = $('#photo-big');
+
+    photoBig.attr('class', 'animated fadeOut');
+
+    window.setTimeout(function() {
+      photoBig.hide();
+      photoBig.removeClass('active');
+    }, 1001);
+  }
+
+  $(document).one('click', hidePhotoBig);
+
   $(document).on('click', '.gallery .item', function(e) {
-    e.stopPropagation();
     var image = $(this).find('img'),
         figure = $(this),
         photoBig = $('#photo-big');
@@ -312,7 +325,8 @@
 
       window.setTimeout(function() {
         photoBig.addClass('active');
-      }, 150);
+        $(document).off('click', hidePhotoBig);
+      }, 10);
 
       window.setTimeout(function() {
         photoBig.css({
@@ -325,19 +339,7 @@
 
   $(document).on('click', '.gallery #photo-big', function(e) {
     e.stopPropagation();
-    var image = $('.gallery .item').first().find('img'),
-        photoBig = $('#photo-big'),
-        width = image.width(),
-        height = image.height(),
-        x = photoBig.data('x'),
-        y = photoBig.data('y');
-
-    photoBig.attr('class', 'animated fadeOut');
-
-    window.setTimeout(function() {
-      photoBig.hide();
-      photoBig.removeClass('active');
-    }, 1001);
+    hidePhotoBig();
   });
 
   $('.return-nosotros')
