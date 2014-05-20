@@ -1460,3 +1460,38 @@ svg#bigTriangleColor {
                 transform: scale(1.3) rotate(45deg);
     }
 }
+
+.background-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+
+  .background {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 3.5s;
+  }
+
+  .background.current {
+    opacity: 1;
+  }
+
+  #background-1 {
+    background:#FFF url("@{img}/img_slide.jpg") no-repeat;
+    background-size: cover;
+  }
+
+  #background-2 {
+    background: url("@{img}/bg_cursos.jpg") no-repeat top center;
+    background-size: cover;
+  }
+
+  #background-3 {
+    background: url("@{img}/bg_nosotros.jpg") no-repeat top center;
+    background-size: cover;
+  }
+}

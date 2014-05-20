@@ -93,6 +93,28 @@
                 return false;
               });
             });
+
+            var container = $('.background-container');
+            container.on('transitionend', '.background.current', function(e) {
+              var current = $(e.target),
+                  next = current.next();
+
+              current.removeClass('current');
+
+              if (current.is(':last-child')) {
+                next = current.siblings().first();
+              }
+
+              next.addClass('current');
+            });
+
+            $(window).on('load', function() {
+              var current = $('.background.current'),
+                  next = current.next();
+
+              current.removeClass('current');
+              next.addClass('current');
+            });
           };
       return { init : init };
     })();
