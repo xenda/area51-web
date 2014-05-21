@@ -178,6 +178,8 @@
         },
         'afterLoad': function (anchorLink, index) {
           $headerWrap.removeClass('wrap-head-home');
+          // console.log($('html').height() - 83);
+          // $('#fullpage').children().height($('html').height() - 83);
           if (index === 1) {
             $header.hide();
           } else if (index > 1) {
@@ -308,7 +310,6 @@
   });
 
   function hidePhotoBig() {
-    console.log('hidePhotoBig');
     var photoBig = $('#photo-big');
 
     photoBig.attr('class', 'animated fadeOut');
