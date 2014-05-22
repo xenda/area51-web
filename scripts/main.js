@@ -286,6 +286,8 @@
     .bind('click', function(e) {
       e.preventDefault();
 
+      $('#sec-nosotros').height($('#sec-nosotros').height());
+
       $('.nosotros-content').fadeOut();
       $('.nosotros-gallery').removeClass('hidden');
 
@@ -363,6 +365,8 @@
   $('.return-nosotros')
     .bind('click', function(e) {
       e.preventDefault();
+
+      $('#sec-nosotros').height('');
       
       $('.nosotros-content').fadeIn();
       $('.nosotros-gallery').addClass('hidden');
