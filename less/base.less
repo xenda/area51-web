@@ -666,8 +666,13 @@ header.darker{
         top: 0;
         z-index: 10;
         display: -webkit-flex;
-        align-items: center;
+        display: flex;
+        -webkit-flex-direction: row;
+        flex-direction: row;
         -webkit-align-items: center;
+        align-items: center;
+        -webkit-justify-content: center;
+        justify-content: center;
         transition: opacity 1s, z-index 1s;
         opacity: 1;
 
