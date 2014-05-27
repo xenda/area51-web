@@ -2,13 +2,16 @@
 @tcolor: #535353;
 @tgray: #343434;
 @lgray: #717171;
+@rgrey: #6D6B6B;
 @normal: #97959c;
 @hover: #785778;
 @blue: #6DCFF6;
+@yellow: #FFFF77;
 @bluedark: #008bca;
 
 /* base */
 @import url(http://fonts.googleapis.com/css?family=Open+Sans);
+@import url('http://fonts.googleapis.com/css?family=Roboto+Slab:400,700');
 @font-face {
     font-family: 'DINEngschriftStd-2';
     src: url('fonts/DINEngschriftStd-2.eot');
@@ -18,10 +21,10 @@
 }
 html, body,h1,h2,h3,h4,h5 {
     margin: 0;
-    padding: 0;
+    padding: 0; 
 }
 h1{}
-h2{font-family: "DINEngschriftStd-2";font-size: 35px; font-weight: normal;}
+h2{font-family: 'Roboto Slab', serif;font-size: 35px; font-weight: normal;}
 textarea {
     resize: none;
 }
@@ -339,11 +342,6 @@ header.main{
             padding: 0;
             .radius(5px);
             li{
-                &:hover, &.selected{
-                    a{
-                        color: @blue;
-                    }
-                }
                 a{
                     color: #fff;
                     font-size: 0.875em;
@@ -407,7 +405,6 @@ header.main{
             margin-top: 15px;
             ul.menu li a{
                 font-size: 0.9em;
-                text-shadow: rgba(0,0,0,0.5) 10px;
             }
         }
         .wrap_telefono_social{
@@ -458,8 +455,11 @@ header.darker{
     .slide{
         display: none;
 
-        h2{color: @blue;text-align: center;font-size: 40px;line-height: 55px;margin-bottom: 20px;}
-        p{color: #FEFFFF;font-size: 13px;line-height: 22px;text-align: center;}
+        h2{color: white; font-weight: bold; text-align: center;font-size: 40px;line-height: 1.6em;}
+        p{color: @yellow;font-size: 15px;line-height: 1.6em;text-align: center;}
+        .w-inner {
+            width: 85%;
+        }
     }
 
     .toSlide {
@@ -641,10 +641,11 @@ header.darker{
                 padding: 10px 20px;
                 text-align: center;
                 h3{
-                    color: @blue;
+                    color: @rgrey;
                     font-size: 24px;
-                    margin-bottom: 15px;
+                    margin-bottom: 5px;
                     font-family: "DINEngschriftStd-2";
+                    font-family: 'Roboto Slab';
                     font-weight: normal;
                     text-transform: uppercase;
                 }
@@ -832,7 +833,7 @@ svg#bigTriangleColor {
         img{  display: block;height: auto;max-width: 100%;}
         figure{position: relative;margin: 0 0 10px; text-align: center;}
         .detail{
-            font-size: 14px;
+            font-size: 16px;
             display: block;
             width: 100%;
             overflow: hidden;
@@ -842,8 +843,9 @@ svg#bigTriangleColor {
             top: 0;
             background-color: rgba(62,62,62,0.9);opacity: 0;
             padding: 10px 15px;
+            padding-top: 40px;
             color: #FFF;margin: 0;
-            line-height: 1em;
+            line-height: 1.4em;
             .transitions();
         }
         h4{
@@ -922,6 +924,8 @@ svg#bigTriangleColor {
             li{
                 display: inline-block;
                 margin: 0;
+                font-size: 14px;
+                padding: 0px 10px;
                 a{
                     display: block;
                     padding: 20px 10px;
@@ -1036,7 +1040,7 @@ svg#bigTriangleColor {
     header.main{
         .wrap_telefono_social{
 
-            .telefono{float: left;margin: 26px 0 0 0;}
+            .telefono{float: left;margin: 26px 0 0 0;font-size: 14px; font-weight: lighter;}
             .list-social{  margin: 20px 0 0 20px;float: left;
                 ul{
                     li{
@@ -1059,7 +1063,10 @@ svg#bigTriangleColor {
             .navbar-toggle{display: none;}
         }
 
-        .nav_menu {text-align: center;bottom: -55px;display: block;
+        .nav_menu {
+            text-align: center;
+            bottom: -55px;
+            display: block;
             ul.menu{
                 background: none;
                 display: inline-block;
@@ -1073,8 +1080,9 @@ svg#bigTriangleColor {
                     }
                     &:hover, &.active{
                         a{
-                            color: @blue;
-                            border-color: @blue;
+                            color: white;
+                            // border-color: @blue;
+                            background-color: rgb(0.0,0.0,0.0);
                             /*text-shadow: 0 1px 1px rgba(0,0,0,0.7);
                             -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, .4);
                             -moz-box-shadow: 1px 1px 3px rgba(0, 0, 0, .4);
@@ -1082,7 +1090,7 @@ svg#bigTriangleColor {
                         }
                     }
                     a{
-                        border: 2px solid transparent;
+                        //border: 2px solid transparent;
                         .radius(5px);
                         font-size: 1em;
                     }
@@ -1249,15 +1257,15 @@ svg#bigTriangleColor {
                 li{display: inline-block;margin: 0 5px;
                     &:hover, &.selected{
                         a{
-                            color: @blue;
-                            border-color: @blue;
+                            color: white;
+                            // border-color: @blue;
                         }
                     }
                     a{
                         border: 2px solid transparent;
                         .radius(5px);
                         font-size: 1em;
-                        padding: 10px 6px;
+                        padding: 6px 16px;
                     }
                 }
             }
@@ -1456,7 +1464,7 @@ svg#bigTriangleColor {
     /* About 1200px */
     header.main{
         .wrap_telefono_social{margin: 3px 0 0;
-            .telefono{float: left;margin: 46px 0 0 0;font-size: 22px;}
+            .telefono{float: left;margin: 46px 0 0 0;font-size: 16px;}
             .list-social{margin: 41px 0 0 15px;float: left;
                 ul li{
                     margin-right: 8px;
