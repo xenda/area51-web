@@ -228,10 +228,13 @@
   }
 
   function checkOffset() {
+    var $navbar = $($navbarBtn.data('target'));
     if ($navbarBtn.height() + $navbarBtn.offset().top > 70) {
       $navbarBtn.css({'position': 'fixed', 'top': '10px'});
+      $navbar.css({'position': 'fixed', 'top': '60px'});
     } else {
       $navbarBtn.css({'position': 'relative', 'top': 'auto'});
+      $navbar.css({'position': 'relative', 'top': 'auto'});
     }
   }
 
@@ -249,6 +252,15 @@
 
     $navbarBtn.bind('click', function() {
       var target = $($(this).data('target'));
+
+      target.find('a').each(function(index, item) {
+        var href = $(item).attr('href');
+
+        if (href.indexOf('#sec-') === -1) {
+          $(item).attr('href', href.replace('#', '#sec-'));
+        }
+      });
+
       if (target.hasClass('active')) {
         target.removeClass('slideInDown').addClass('slideOutUp');
 
