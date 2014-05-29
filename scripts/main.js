@@ -234,7 +234,7 @@
       $navbar.css({'position': 'fixed', 'top': '60px'});
     } else {
       $navbarBtn.css({'position': 'relative', 'top': 'auto'});
-      $navbar.css({'position': 'fixed', 'top': '120px'});
+      $navbar.css({'position': 'fixed', 'top': '150px'});
     }
   }
 
