@@ -247,6 +247,20 @@
       $('#sec-inicio .slide').hide().removeClass('active').filter(':eq(' + (slideIndex - 1) + ')').show().addClass('active');
     }).filter(':eq(0)').trigger('click');
 
+    $navbarBtn.bind('click', function() {
+      var target = $($(this).data('target'));
+      if (target.hasClass('active')) {
+        target.removeClass('slideInDown').addClass('slideOutUp');
+
+        window.setTimeout(function() {
+          target.removeClass('active');
+        }, 1000);
+      }
+      else {
+        target.removeClass('slideOutUp').addClass('slideInDown').addClass('active');
+      }
+    });
+
 
     $(document).bind('scroll', function () {
       checkOffset();
