@@ -231,10 +231,10 @@
     var $navbar = $($navbarBtn.data('target'));
     if ($navbarBtn.height() + $navbarBtn.offset().top > 70) {
       $navbarBtn.css({'position': 'fixed', 'top': '10px'});
-      $navbar.css({'position': 'fixed', 'top': '60px'});
+      $navbar.css({'position': 'fixed', 'top': '50px'});
     } else {
       $navbarBtn.css({'position': 'relative', 'top': 'auto'});
-      $navbar.css({'position': 'fixed', 'top': '150px'});
+      $navbar.css({'position': 'fixed', 'top': '137px'});
     }
   }
 
