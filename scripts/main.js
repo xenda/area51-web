@@ -177,6 +177,10 @@
           }, 900);
         },
         afterPageScroll: function(page) {
+          if (!page.find('.animated').hasClass('wow')) {
+            page.find('.animated').addClass('wow');
+          }
+
           var wow = new WOW(
             {
               boxClass:     'wow',      // default
