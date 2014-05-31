@@ -176,6 +176,16 @@
             showContactInfo();
           }, 900);
         },
+        afterPageScroll: function(page) {
+          var wow = new WOW(
+            {
+              boxClass:     'wow',      // default
+              animateClass: 'animated', // default
+              offset:       0          // default
+            }
+          )
+          wow.init();
+        },
         'afterLoad': function (anchorLink, index) {
           $headerWrap.removeClass('wrap-head-home');
           // console.log($('html').height() - 83);
@@ -203,14 +213,6 @@
         afterSlideLoad: function (anchorLink, index, slideAnchor, slideIndex) {
           console.log(anchorLink, index, slideAnchor, slideIndex);
           $('#nav-dots span:eq(' + slideIndex + ')').addClass('nav-dot-current').siblings().removeClass('nav-dot-current');
-          /*var wow = new WOW(
-            {
-              boxClass:     'wow',      // default
-              animateClass: 'animated', // default
-              offset:       0          // default
-            }
-          )
-          wow.init();*/
         }
       });
       $.noop($header);
