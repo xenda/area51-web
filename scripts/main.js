@@ -256,6 +256,13 @@
       $('#sec-inicio .slide').hide().removeClass('active').filter(':eq(' + (slideIndex - 1) + ')').show().addClass('active');
     }).filter(':eq(0)').trigger('click');
 
+    var $navbar = $($navbarBtn.data('target'));
+
+    $navbar.bind('click', function() {
+      $navbar.removeClass('active');
+      $('#fullpage').removeClass('pushed');
+    });
+
     $navbarBtn.bind('click', function() {
       var target = $($(this).data('target'));
       var fullpage = $('#fullpage');
