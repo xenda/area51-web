@@ -1011,7 +1011,6 @@ svg#bigTriangleColor {
     }
     header.main .nav_menu ul.menu {
         border-radius: 0;
-        background: rgba(62, 62, 62, 0.9);
     }
     header.main .nav_menu ul.menu li a {
         padding: 10px 20px;
@@ -1564,5 +1563,34 @@ svg#bigTriangleColor {
     }
     .touch #sec-nosotros .nosotros-gallery .gallery .item {
         width: 20%;
+    }
+}
+
+.touch {
+    #sec-inicio .bs-example-navbar-collapse-1 {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 0px;
+        background: rgb(62, 62, 62);
+        transition: width 0.6s;
+        overflow: hidden;
+    }
+
+    #sec-inicio .bs-example-navbar-collapse-1.active {
+        width: 200px;
+    }
+
+    #fullpage {
+        position: relative;
+        width: 100%;
+        transition: left 0.6s;
+        left: 0px;
+    }
+
+    #fullpage.pushed {
+        left: 200px;
     }
 }
