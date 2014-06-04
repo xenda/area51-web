@@ -348,8 +348,7 @@
 
   $(document).on('mouseover', '.gallery .item', function() {
     var imageURL = $(this).find('img').attr('src');
-    imageURL = imageURL.replace('150', galleryWidth);
-    imageURL = imageURL.replace('150', galleryHeight);
+    imageURL = imageURL.replace('thumbs', 'originals');
 
     if (cachedImages[imageURL] !== undefined) {
       return;
@@ -381,8 +380,7 @@
         photoBig = $('#photo-big');
 
     var imageURL = $(this).find('img').attr('src');
-    imageURL = imageURL.replace('150', galleryWidth);
-    imageURL = imageURL.replace('150', galleryHeight);
+    imageURL = imageURL.replace('thumbs', 'originals');
 
     if (!photoBig.hasClass('active')) {
       photoBig.attr('class', 'animated').hide().css({
