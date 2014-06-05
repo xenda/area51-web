@@ -432,4 +432,13 @@
         $('#return-contacto').fadeIn();
       }
     });
+
+  $(document).on('click', '.wrap-courses-logo figure', function() {
+    var title = $(this).data('title'),
+        caption = $(this).find('figcaption'),
+        captionText = caption.text();
+
+    caption.text(title);
+    $(this).data('title', captionText);
+  });
 })(Modernizr, jQuery, GMaps, window, document, navigator);
