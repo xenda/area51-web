@@ -443,7 +443,7 @@
 
   $(document).on('click', '.wrap-courses-logo figure', function() {
     var title = $(this).data('title'),
-        caption = $(this).find('figcaption'),
+        caption = $(this).parents('.tab-content').find('.detail h3'),
         captionText = caption.text();
 
     caption.text(title);
