@@ -346,6 +346,14 @@
       galleryHeight = $('.gallery').height();
     });
 
+  $('.download-brochure')
+    .bind('click', function(e){
+      $("https://www.dropbox.com/s/nz7wgs3ckk7hhva/Resumen_Area51.pdf")
+    })
+  
+
+
+
   $(document).on('mouseover', '.gallery .item', function() {
     var imageURL = $(this).find('img').attr('src');
     imageURL = imageURL.replace('thumbs', 'originals');
