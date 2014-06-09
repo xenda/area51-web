@@ -2,6 +2,7 @@
 @tcolor: #535353;
 @tgray: #343434;
 @lgray: #717171;
+@ltrgray: #9C9C9C;
 @rgrey: #6D6B6B;
 @normal: #97959c;
 @hover: #785778;
@@ -225,9 +226,10 @@ label{
     &.error{display: none !important;}
 }
 p{
-    font-size: 0.875em;
-    line-height: 1.8em;
-    color: @tcolor;
+    font-size: 0.75em;
+    line-height: 1.6em;
+    color: @ltrgray;
+    margin-bottom: 10px;
     font-family: 'Open Sans', sans-serif;
 }
 /**** Grids *****/
@@ -343,8 +345,8 @@ header.main{
             .radius(5px);
             li{
                 a{
-                    color: #fff;
-                    font-size: 0.875em;
+                    color: white; //#BEBDBD;
+                    font-size: 0.8em;
                     padding: 10px 10px;
                     display: block;
                     font-family: 'Open Sans', sans-serif;
@@ -455,8 +457,23 @@ header.darker{
     .slide{
         display: none;
 
-        h2{color: white; font-weight: bold; text-align: center;font-size: 40px;line-height: 1.6em;}
-        p{color: @yellow;font-size: 15px;line-height: 1.6em;text-align: center;}
+        h2{
+            color: white; 
+            font-weight: bold; 
+            text-align: center;
+            font-size: 40px;
+            line-height: 1.6em;
+            // font-family: 'Monda', sans-serif, arial;
+            text-shadow: 0 1px 1px rgba(0,0,0,0.7);
+        }
+        p{
+            color: white;
+            font-size: 15px;
+            line-height: 1.6em;
+            text-align: center;
+            font-family: 'Monda', sans-serif, arial;
+            text-shadow: 0 1px 1px rgba(0,0,0,0.7);
+        }
         .w-inner {
             width: 85%;
         }
@@ -532,7 +549,11 @@ header.darker{
         margin: 0 0 0 -28px;
     }
     .head{padding: 25px 0;
-        h2{color: @blue;}
+        h2{
+            color: white;
+            font-family: 'Monda', sans-serif, arial;
+            text-shadow: 0 1px 1px rgba(0,0,0,0.7);
+        }
         p{color: #FFF;}
     }
     .wrap-tabs{
@@ -643,9 +664,8 @@ header.darker{
                 text-align: center;
                 h3{
                     color: @rgrey;
-                    font-size: 24px;
+                    font-size: 14px;
                     margin-bottom: 5px;
-                    font-family: "DINEngschriftStd-2";
                     font-family: 'Roboto Slab';
                     font-weight: normal;
                     text-transform: uppercase;
@@ -655,7 +675,9 @@ header.darker{
     }
 }
 #sec-nosotros{
-    background: url("@{img}/bg_nosotros.jpg") no-repeat top center;
+    // background: url("@{img}/bg_nosotros.jpg") no-repeat top center;
+    background: url("@{img}/bg_home_02.jpg") no-repeat bottom center;
+    background-size: cover;
     position: relative;
     bottom: -5px;
 
@@ -737,12 +759,12 @@ header.darker{
 
     .text-float {
         p {
-            font-family: 'Monda', sans-serif, arial;
             margin: 0 0 12px;
             font-size: 22px;
             line-height: 1.3em;
             font-weight: 100;
             color: #fff;
+            font-family: 'Monda', sans-serif, arial;
             text-shadow: 0 1px 1px rgba(0,0,0,0.7);
         }
 
@@ -799,7 +821,7 @@ svg#bigTriangleColor {
     stroke-width: 2;
 }
 #sec-instructores{
-    background: url("@{img}/bg_instructores.jpg") no-repeat top center;
+    background: url("@{img}/bg_instructores.jpg") no-repeat bottom center;
     background-size: 100% 100%;
     
     .w-inner{
@@ -817,8 +839,10 @@ svg#bigTriangleColor {
     }
     .head{ padding: 0 6px;
         h2{
-            color: @blue;
+            color: white;
             margin-bottom: 5px;
+            font-family: 'Monda', sans-serif, arial;
+            text-shadow: 0 1px 1px rgba(0,0,0,0.7);
         }
         p{color: #FFF;font-size: 14px;line-height: 24px;font-weight: bold;}
     }
@@ -834,7 +858,15 @@ svg#bigTriangleColor {
         &:nth-child(2n)  {
             margin-right: 0;
         }
-        img{  display: block;height: auto;max-width: 100%;}
+        img{ 
+            display: block;
+            height: auto;
+            max-width: 100%;
+            border-radius: 15px;
+            -webkit-box-shadow: 0px 0px 16px 0px rgba(50, 50, 50, 0.75);
+            -moz-box-shadow:    0px 0px 16px 0px rgba(50, 50, 50, 0.75);
+            box-shadow:         0px 0px 16px 0px rgba(50, 50, 50, 0.75);
+        }
         figure{position: relative;margin: 0 0 10px; text-align: center;}
         .detail{
             font-size: 16px;
@@ -850,10 +882,16 @@ svg#bigTriangleColor {
             padding-top: 40px;
             color: #FFF;margin: 0;
             line-height: 1.4em;
+            border-radius: 15px;
             .transitions();
         }
         h4{
-            color: @blue;font-size: 16px;text-align: center;font-family: "DINEngschriftStd-2";font-weight: normal;
+            color: white;
+            font-size: 12px;
+            text-align: center;
+            font-weight: normal;
+            font-family: 'Monda', sans-serif, arial;
+            text-shadow: 0 1px 1px rgba(0,0,0,0.7);
         }
         &:hover{
             .detail{opacity: 1;}
@@ -1367,8 +1405,8 @@ svg#bigTriangleColor {
     .fullpage #sec-nosotros{
         .text-float {
             position: absolute;
-            top: 30%;
-            left: 60%;
+            top: 37%;
+            left: 7%;
             width: 36%;
             padding: 0;
             text-align: left;
@@ -1399,7 +1437,7 @@ svg#bigTriangleColor {
             &:nth-child(2n){ margin-right: 2.5%;}
             &:nth-child(3n){ margin-right: 2.5%;}
             h4{
-                font-size: 22px;
+                font-size: 14px;
             }
         }
     }
@@ -1537,17 +1575,20 @@ svg#bigTriangleColor {
   }
 
   #background-1 {
-    background:#FFF url("@{img}/img_slide.jpg") no-repeat;
+    background:#FFF url("@{img}/bg_home_01.jpg") no-repeat;
+    background-position: bottom;
     background-size: cover;
   }
 
   #background-2 {
-    background: url("@{img}/bg_cursos.jpg") no-repeat top center;
+    background:#FFF url("@{img}/bg_home_02.jpg") no-repeat;
+    background-position: top;
     background-size: cover;
   }
 
   #background-3 {
-    background: url("@{img}/bg_nosotros.jpg") no-repeat top center;
+    background:#FFF url("@{img}/bg_home_03.jpg") no-repeat;
+    background-position: bottom;
     background-size: cover;
   }
 }
@@ -1579,7 +1620,7 @@ svg#bigTriangleColor {
         background-size: 60% auto;
         transition: width 0.45s;
         overflow: hidden;
-        padding-top: 90px;
+        padding-top: 110px;
     }
 
     #sec-inicio .bs-example-navbar-collapse-1.active {
@@ -1598,7 +1639,7 @@ svg#bigTriangleColor {
     }
 
     #sec-inicio .slide h2 {
-        font-size: 36px;
+        font-size: 20px;
     }
     
     header.main .nav_menu ul.menu li {

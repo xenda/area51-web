@@ -244,6 +244,23 @@
     }
   }
 
+  function downloadURL(url) {
+    var link = document.createElement("a");
+    link.download = name;
+    link.href = url;
+    if (link.dispatchEvent){
+      var clickEvent = new MouseEvent('click', {
+          'view': window,
+          'bubbles': true,
+          'cancelable': true
+        });
+      link.dispatchEvent(clickEvent);  
+    }
+    else {
+     link.fireEvent("click");   
+    }
+  }
+
   $('#sec-inicio .slide').each(function (i) {
     var $dot = $('<span class="toSlide animated wow fadeIn" data-index="' + (i + 1) + '"/>');
     $('#nav-dots').append($dot);
@@ -348,11 +365,9 @@
 
   $('.download-brochure')
     .bind('click', function(e){
-      $("https://www.dropbox.com/s/nz7wgs3ckk7hhva/Resumen_Area51.pdf")
+      downloadURL("https://www.dropbox.com/s/nz7wgs3ckk7hhva/Resumen_Area51.pdf");
     })
   
-
-
 
   $(document).on('mouseover', '.gallery .item', function() {
     var imageURL = $(this).find('img').attr('src');
