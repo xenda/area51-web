@@ -176,7 +176,7 @@
             showContactInfo();
           }, 900);
         },
-        afterPageScroll: function(page) {
+        beforePageScroll: function(page) {
           if (!page.find('.animated').hasClass('wow')) {
             page.find('.animated').addClass('wow');
           }
