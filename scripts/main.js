@@ -3,6 +3,9 @@
 (function (Modernizr, $, GMaps, window, document, navigator) {
   var map = null;
   var markers = [];
+  var galleryWidth,
+      galleryHeight,
+      cachedImages = {};
   function setGoogleMaps() {
     if (GMaps) {
       map = new GMaps({
@@ -88,6 +91,28 @@
                 return false;
               });
             });
+
+            var container = $('.background-container');
+            container.on('transitionend', '.background.current', function(e) {
+              var current = $(e.target),
+                  next = current.next();
+
+              current.removeClass('current');
+
+              if (current.is(':last-child')) {
+                next = current.siblings().first();
+              }
+
+              next.addClass('current');
+            });
+
+            $(window).on('load', function() {
+              var current = $('.background.current'),
+                  next = current.next();
+
+              current.removeClass('current');
+              next.addClass('current');
+            });
           };
       return { init : init };
     })();
@@ -119,7 +144,8 @@
       $.fn.fullpage({
         'anchors': ['inicio', 'cursos', 'nosotros', 'instructores', 'contacto'],
         'slidesColor': ['none', '#3e3e3e', '#3e3e3e', '#3e3e3e', '#ccc'],
-        'scrollingSpeed': 1000,
+        'scrollingSpeed': 700,
+        'easing': 'easeInOutCirc',
         'fixedElements': '#header-absolute',
         'menu': '#header-absolute',
         'paddingTop': '83px',
@@ -150,8 +176,24 @@
             showContactInfo();
           }, 900);
         },
+        beforePageScroll: function(page) {
+          if (!page.find('.animated').hasClass('wow')) {
+            page.find('.animated').addClass('wow');
+          }
+
+          var wow = new WOW(
+            {
+              boxClass:     'wow',      // default
+              animateClass: 'animated', // default
+              offset:       0          // default
+            }
+          )
+          wow.init();
+        },
         'afterLoad': function (anchorLink, index) {
           $headerWrap.removeClass('wrap-head-home');
+          // console.log($('html').height() - 83);
+          // $('#fullpage').children().height($('html').height() - 83);
           if (index === 1) {
             $header.hide();
           } else if (index > 1) {
@@ -192,15 +234,35 @@
   }
 
   function checkOffset() {
+    //var $navbar = $($navbarBtn.data('target'));
     if ($navbarBtn.height() + $navbarBtn.offset().top > 70) {
       $navbarBtn.css({'position': 'fixed', 'top': '10px'});
+      //$navbar.css({'position': 'fixed', 'top': '50px'});
     } else {
       $navbarBtn.css({'position': 'relative', 'top': 'auto'});
+      //$navbar.css({'position': 'fixed', 'top': '137px'});
+    }
+  }
+
+  function downloadURL(url) {
+    var link = document.createElement("a");
+    link.download = name;
+    link.href = url;
+    if (link.dispatchEvent){
+      var clickEvent = new MouseEvent('click', {
+          'view': window,
+          'bubbles': true,
+          'cancelable': true
+        });
+      link.dispatchEvent(clickEvent);  
+    }
+    else {
+     link.fireEvent("click");   
     }
   }
 
   $('#sec-inicio .slide').each(function (i) {
-    var $dot = $('<span class="toSlide" data-index="' + (i + 1) + '"/>');
+    var $dot = $('<span class="toSlide animated wow fadeIn" data-index="' + (i + 1) + '"/>');
     $('#nav-dots').append($dot);
   });
 
@@ -211,10 +273,52 @@
       $('#sec-inicio .slide').hide().removeClass('active').filter(':eq(' + (slideIndex - 1) + ')').show().addClass('active');
     }).filter(':eq(0)').trigger('click');
 
+    var $navbar = $($navbarBtn.data('target'));
+
+    $navbar.bind('click', function() {
+      $navbar.removeClass('active');
+      $('#fullpage').removeClass('pushed');
+    });
+
+    $navbarBtn.bind('click', function() {
+      var target = $($(this).data('target'));
+      var fullpage = $('#fullpage');
+
+      target.find('a').each(function(index, item) {
+        var href = $(item).attr('href');
+
+        if (href.indexOf('#sec-') === -1) {
+          $(item).attr('href', href.replace('#', '#sec-'));
+        }
+      });
+
+      target.removeClass('animated slideInDown');
+
+      if (target.hasClass('active')) {
+        target.removeClass('active');
+        fullpage.removeClass('pushed');
+      }
+      else {
+        target.addClass('active');
+        fullpage.addClass('pushed');
+      }
+
+      // if (target.hasClass('active')) {
+      //   target.removeClass('slideInDown').addClass('slideOutUp');
+
+      //   window.setTimeout(function() {
+      //     target.removeClass('active');
+      //   }, 1000);
+      // }
+      // else {
+      //   target.removeClass('slideOutUp').addClass('slideInDown').addClass('active');
+      // }
+    });
+
 
     $(document).bind('scroll', function () {
-        checkOffset();
-      });
+      checkOffset();
+    });
   }
   // Course Tabs
   $('.wrap-tabs').each(function () {
@@ -246,14 +350,118 @@
     })
     .hide();
 
+  $('.see-gallery')
+    .bind('click', function(e) {
+      e.preventDefault();
+
+      $('#sec-nosotros').height($('#sec-nosotros').height());
+
+      $('.nosotros-content').fadeOut();
+      $('.nosotros-gallery').removeClass('hidden');
+
+      galleryWidth = $('.gallery').width();
+      galleryHeight = $('.gallery').height();
+    });
+
+  $('.download-brochure')
+    .bind('click', function(e){
+      downloadURL("https://www.dropbox.com/s/nz7wgs3ckk7hhva/Resumen_Area51.pdf");
+    })
+  
+
+  $(document).on('mouseover', '.gallery .item', function() {
+    var imageURL = $(this).find('img').attr('src');
+    imageURL = imageURL.replace('thumbs', 'originals');
+
+    if (cachedImages[imageURL] !== undefined) {
+      return;
+    }
+
+    var image = new Image();
+    image.src = imageURL;
+    $(image).one('load', function() {
+      cachedImages[imageURL] = image;
+    });
+  });
+
+  function hidePhotoBig() {
+    var photoBig = $('#photo-big');
+
+    photoBig.attr('class', 'animated fadeOut');
+
+    window.setTimeout(function() {
+      photoBig.hide();
+      photoBig.removeClass('active');
+    }, 1001);
+  }
+
+  $(document).one('click', hidePhotoBig);
+
+  $(document).on('click', '.gallery .item', function(e) {
+    var image = $(this).find('img'),
+        figure = $(this),
+        photoBig = $('#photo-big');
+
+    var imageURL = $(this).find('img').attr('src');
+    imageURL = imageURL.replace('thumbs', 'originals');
+
+    if (!photoBig.hasClass('active')) {
+      photoBig.attr('class', 'animated').hide().css({
+        'width': '100%',
+        'height': '100%',
+        'display': 'block',
+        'opacity': 0,
+        'background': '#000 url("/images/ajax-loader.gif") no-repeat center center',
+        'background-size': 'auto auto'
+      }).addClass('fadeIn');
+
+      window.setTimeout(function() {
+        photoBig.addClass('active');
+        //$(document).off('click', hidePhotoBig);
+      }, 10);
+
+      window.setTimeout(function() {
+        photoBig.css({
+          'background': 'url("' + imageURL + '") no-repeat center center, #000 url("/images/ajax-loader.gif") no-repeat center center',
+          'background-size': 'contain, auto auto'
+        });
+      }, 250);
+    }
+  });
+
+  $(document).on('click', '.gallery #photo-big', function(e) {
+    e.stopPropagation();
+    hidePhotoBig();
+  });
+
+  $('.return-nosotros')
+    .bind('click', function(e) {
+      e.preventDefault();
+
+      $('#sec-nosotros').height('');
+      
+      $('.nosotros-content').fadeIn();
+      $('.nosotros-gallery').addClass('hidden');
+    });
+
   $('.see-map')
     .bind('click', function (event) {
       if (!supportBlacklist()) {
         event.preventDefault();
         var selected = $(this).parents('.tab-content').attr('id').split('direccion-')[1];
+        map.setCenter(markers[selected].getPosition());
         google.maps.event.trigger(markers[selected], 'click');
         $mapOverlay.fadeOut();
         $('#return-contacto').fadeIn();
       }
     });
+
+  $(document).on('click', '.wrap-courses-logo figure', function() {
+    var title = $(this).data('title'),
+        caption = $(this).parents('.tab-content').find('.detail h3'),
+        captionText = caption.text();
+
+    caption.text(title);
+    $(this).data('title', captionText);
+  });
 })(Modernizr, jQuery, GMaps, window, document, navigator);

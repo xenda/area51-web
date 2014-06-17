@@ -12,6 +12,7 @@
   <meta content="Somos el primer centro de entrenamiento en el Perú con los principales instructores del medio nacional e internacional en: GOOGLE, ADOBE, AUTODESK y RHINO" name="description">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" type="text/css" href="styles/normalize.css">
+  <link rel="stylesheet" type="text/css" href="styles/animate.css">
   <link rel="stylesheet" type="text/css" href="styles/base.css">
   <link rel="stylesheet" type="text/css" href="styles/sl-slider.css">
   <link rel="stylesheet" type="text/css" href="styles/colorbox.css">
@@ -20,11 +21,12 @@
   <link rel="stylesheet" href="styles/ieonly.css" type="text/css" media="screen" />
   <![endif]-->
   <noscript>
-  <link rel="stylesheet" type="text/css" href="styles/styleNoJS.css" />
+    <link rel="stylesheet" type="text/css" href="styles/styleNoJS.css" />
   </noscript>
 
   <script src="scripts/lib/jquery-1.9.1.min.js"></script>
   <script src="scripts/lib/modernizr.custom.79639.js"></script>
+  <script src="scripts/lib/wow.min.js"></script>
   <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
   <script src="scripts/lib/jquery.easings.min.js"></script>
   <script src="scripts/lib/jquery.slimscroll.min.js"></script>
@@ -32,32 +34,34 @@
   <script src="scripts/lib/jquery.ba-cond.min.js"></script>
   <script src="scripts/lib/jquery.slitslider.js"></script>
 </head>
+
 <body class="lyt-home">
 <header id="header-absolute" class="main w-fluid">
   <div class="cf wrap-head">
     <div class="logo_menu">
-      <h1 class="logo"><a href="#inicio"><img alt="Area51" src="images/logo_area51.png" /></a></h1>
-      <button data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
+      <h1 class="logo animated fadeIn"><a href="#inicio"><img alt="Area51" src="images/logo_area51.png" /></a></h1>
+      <button data-target=".bs-example-navbar-collapse-1" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
         <span class="sr-only">MENU</span>
         <span class="group-bar"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </span>
       </button>
     </div>
-    <nav class="nav_menu">
+    <nav class="nav_menu animated slideInDown bs-example-navbar-collapse-1">
       <ul class="menu">
-        <li data-menuanchor="inicio" class="active"><a href="#sec-inicio">Inicio</a></li>
-        <li data-menuanchor="cursos"><a href="#sec-cursos">Cursos</a></li>
-        <li data-menuanchor="nosotros"><a href="#sec-nosotros">Nosotros</a></li>
-        <li data-menuanchor="instructores"><a href="#sec-instructores">Instructores</a></li>
-        <li data-menuanchor="contacto"><a href="#sec-contacto">Contacto</a></li>
+        <li data-menuanchor="inicio" class="active"><a href="#inicio">Inicio</a></li>
+        <li data-menuanchor="cursos"><a href="#cursos">Cursos</a></li>
+        <li data-menuanchor="nosotros"><a href="#nosotros">Nosotros</a></li>
+        <li data-menuanchor="instructores"><a href="#instructores">Instructores</a></li>
+        <li data-menuanchor="contacto"><a href="#contacto">Contacto</a></li>
       </ul>
     </nav>
-    <div class="wrap_telefono_social"> <span class="telefono">(+511) 447-0162</span>
+    <div class="wrap_telefono_social animated slideInRight">
+      <span class="telefono">(+511) 447-0162</span>
       <div class="list-social">
         <ul>
-          <li><a class="fb" href="#">Area51 en Facebook</a></li>
-          <li><a class="tw" href="#">Area51 en Twitter</a></li>
-          <li><a class="yt" href="#">Area51 en Youtube</a></li>
-          <li class="last"><a class="gh" href="#">Area51 en Github</a></li>
+          <li><a class="fb" href="https://www.facebook.com/Area51.pe">Area51 en Facebook</a></li>
+          <li><a class="tw" href="https://www.twitter.com/area51pe">Area51 en Twitter</a></li>
+          <li><a class="yt" href="http://goo.gl/FZGfIe">Area51 en Youtube</a></li>
+          <li class="last"><a class="gh" href="http://www.area51.pe/github">Area51 en Github</a></li>
         </ul>
       </div>
     </div>
@@ -65,110 +69,107 @@
 </header>
 <div id="fullpage">
   <section id="sec-inicio" class="active section w-fluid cf">
-      <div class="slide">
-  <!-- <div class="bg-img"><img alt="" style="width:100%; height:100%;"  class="img" src="images/img_slide.jpg" alt="creditacho" title="creditacho" /></div> -->
-  <div class="cf w-inner">
-    <h2>NEW COURSE 1<br/>
-      HTML5 - 20th March</h2>
-    <p>Seamlessly disseminate best-of-breed vortals through user-centric methodologies. Dramatically disintermediate e-business imperatives with ethical opportunities.</p>
-  </div>
-</div>
-<div class="slide">
-  <!-- <div class="bg-img bg-img-1"><img alt=""  class="img" src="images/img_slide.jpg" alt="creditacho" title="creditacho" /></div> -->
-  <div class="cf w-inner">
-    <h2>NEW COURSE 2<br/>
-      HTML5 - 20th March</h2>
-    <p>Seamlessly disseminate best-of-breed vortals through user-centric methodologies. Dramatically disintermediate e-business imperatives with ethical opportunities.</p>
-  </div>
-</div>
-<div class="slide">
-  <!-- <div class="bg-img bg-img-1"><img alt=""  class="img" src="images/img_slide.jpg" alt="creditacho" title="creditacho" /></div> -->
-  <div class="cf w-inner">
-    <h2>NEW COURSE 3<br/>
-      HTML5 - 20th March</h2>
-    <p>Seamlessly disseminate best-of-breed vortals through user-centric methodologies. Dramatically disintermediate e-business imperatives with ethical opportunities.</p>
-  </div>
-</div>
-<div class="slide">
-  <!-- <div class="bg-img bg-img-1"><img alt=""  class="img" src="images/img_slide.jpg" alt="creditacho" title="creditacho" /></div> -->
-  <div class="cf w-inner">
-    <h2>NEW COURSE 4<br/>
-      HTML5 - 20th March</h2>
-    <p>Seamlessly disseminate best-of-breed vortals through user-centric methodologies. Dramatically disintermediate e-business imperatives with ethical opportunities.</p>
-  </div>
-</div>
-<nav id="nav-dots" class="nav-dots"> <!--span class="nav-dot-current"></span> <span></span> <span></span> <span></span--> </nav>
-<div id="certificados" class="w-fluid">
-  <div class="tr"></div>
-  <div class="cf w-inner">
-    <p>Certified training center</p>
-    <div class="wrap-logo">
-      <article class="item-alianza">
-        <figure> <img alt="" src="images/logo_alianzas_1.png" /> </figure>
-      </article>
-      <article class="item-alianza">
-        <figure> <img alt="" src="images/logo_alianzas_2.png" /> </figure>
-      </article>
-      <article class="item-alianza">
-        <figure> <img alt="" src="images/logo_alianzas_3.png" /> </figure>
-      </article>
-      <article class="item-alianza">
-        <figure> <img alt="" src="images/logo_alianzas_4.png" /> </figure>
-      </article>
-      <article class="item-alianza">
-        <figure> <img alt="" src="images/logo_alianzas_5.png" /> </figure>
-      </article>
+    <div class="background-container">
+      <div class="background current" id="background-1"></div>
+      <div class="background" id="background-2"></div>
+      <div class="background" id="background-3"></div>
     </div>
-  </div>
-</div>
+    <div class="slide">
+      <div class="cf w-inner">
+        <h2 class="animated fadeInLeft">Adobe Certified Expert: Photoshop CC</h2>
+        <p class="animated fadeInRight">[27 JUN] Empieza la preparación para certificarte profesionalmente en Adobe Photoshop CC en nuestro curso que incluye el examen internacional ante Adobe Systems.</p>
+      </div>
+    </div>
+    <div class="slide">
+      <div class="cf w-inner">
+        <h2 class="animated fadeInLeft">Experiencia del Usuario</h2>
+        <p class="animated fadeInRight">[18 JUN] Aprende de la experiencia en proyectos reales con César Soplín en nuestro curso especializado en UX & Arquitectura de Información.</p>
+      </div>
+    </div>
+    <div class="slide">
+      <div class="cf w-inner">
+        <h2 class="animated fadeInLeft">HTML5 + CSS3 + jQuery</h2>
+        <p class="animated fadeInRight">[20 JUN] Quieres crear sitios web modernos y con todo el potencial de HTML5. Nuestros instructores te guiarán con su experiencia en proyectos reconocidos.</p>
+      </div>
+    </div>
+    <div class="slide">
+      <div class="cf w-inner">
+        <h2 class="animated fadeInLeft">Objective-C - Desarrollo Móvil</h2>
+        <p class="animated fadeInRight">[14 JUN] Crea tus propias aplicaciones para iPhone & iPad en nuestro curso de desarrollo nativo para iOS 7 utiliando Objective-C y xCode.</p>
+      </div>
+    </div>
+    <nav id="nav-dots" class="nav-dots"></nav>
+    <div id="certificados" class="w-fluid animated slideInUp">
+      <div class="tr"></div>
+      <div class="cf w-inner">
+        <p>Certified training center</p>
+        <div class="wrap-logo">
+          <a href="http://adobe.ly/13A6lk5" class="item-alianza animated fadeInDown">
+            <figure> <img alt="" src="images/logo_alianzas_1.png" /> </figure>
+          </a>
+          <a href="http://bit.ly/area51Autodesk" class="item-alianza animated fadeInDown">
+            <figure> <img alt="" src="images/logo_alianzas_2.png" /> </figure>
+          </a>
+          <a href="http://bit.ly/area51Autodesk" class="item-alianza animated fadeInDown">
+            <figure> <img alt="" src="images/logo_alianzas_3.png" /> </figure>
+          </a>
+          <a href="http://bit.ly/1egO8BT" class="item-alianza animated fadeInDown">
+            <figure> <img alt="" src="images/logo_alianzas_4.png" /> </figure>
+          </a>
+          <a href="#" class="item-alianza animated fadeInDown">
+            <figure> <img alt="" src="images/logo_alianzas_5.png" /> </figure>
+          </a>
+        </div>
+      </div>
+    </div>
   </section>
   <section id="sec-cursos" class="section w-fluid">
     <div class="tr"></div>
     <div class="cf w-inner">
-      <div class="head">
-        <h2>COURSES</h2>
-        <p>Uniquely drive long-term high-impact value without 2.0 strategic theme areas</p>
+      <div class="head animated slideInLeft">
+        <h2>Nuestros cursos</h2>
       </div>
       <div class="wrap-tabs">
         <div class="list_tab">
           <ul>
-            <li> <a href="#cursos-web" class="active"> <span class="ico web"></span> <span class="text">WEB</span> </a> </li>
-            <li> <a href="#cursos-mobile" class=""> <span class="ico mobile"></span> <span class="text">MOBILE</span> </a> </li>
-            <li> <a href="#cursos-3dyprod" class=""> <span class="ico prod3d"></span> <span class="text">3D & PRODUCCION</span> </a> </li>
-            <li class="last"> <a href="#cursos-juegos" class=""> <span class="ico video"></span> <span class="text">VIDEO JUEGOS</span> </a> </li>
+            <li> <a href="#cursos-web" class="active"> <span class="ico web"></span> <span class="text">WEB & Diseño</span> </a> </li>
+            <li> <a href="#cursos-mobile" class=""> <span class="ico mobile"></span> <span class="text">Mobile</span> </a> </li>
+            <li> <a href="#cursos-3dyprod" class=""> <span class="ico prod3d"></span> <span class="text">3D & Producción</span> </a> </li>
+            <li> <a href="#cursos-juegos" class=""> <span class="ico video"></span> <span class="text">Video Juegos</span> </a> </li>
+            <li class="last"> <a href="#cursos-corporativo" class=""> <span class="ico video"></span> <span class="text">Corporativo</span> </a> </li>
           </ul>
         </div>
         <div class="wrap-tab-content">
           <div id="cursos-web" class="tab-content active">
             <div class="wrap-courses-logo">
-              <div class="item-logo active">
-                <figure> <img alt="" src="images/logo_course_1.jpg" />
-                  <figcaption> HTML 5 </figcaption>
+              <div class="item-logo animated fadeIn active">
+                <figure data-title="HTML5 + CSS3 + jQuery"> <img alt="" src="images/logo_course_1.jpg" />
+                  <figcaption>HTML5 + CSS3 + jQuery</figcaption>
                 </figure>
               </div>
-              <div class="item-logo">
-                <figure> <img alt="" src="images/logo_course_2.jpg" />
-                  <figcaption> PHYTON </figcaption>
+              <div class="item-logo animated fadeIn">
+                <figure data-title="JavaScript"> <img alt="" src="images/logo_course_2.jpg" />
+                  <figcaption>JavaScript</figcaption>
                 </figure>
               </div>
-              <div class="item-logo">
-                <figure> <img alt="" src="images/logo_course_3.jpg" />
-                  <figcaption> DRUPAL </figcaption>
+              <div class="item-logo animated fadeIn">
+                <figure data-title="Python"> <img alt="" src="images/logo_course_3.jpg" />
+                  <figcaption>Python</figcaption>
                 </figure>
               </div>
-              <div class="item-logo">
-                <figure> <img alt="" src="images/logo_course_4.jpg" />
-                  <figcaption> JS FOR DESIGNER </figcaption>
+              <div class="item-logo animated fadeIn">
+                <figure data-title="Ruby & Rails"> <img alt="" src="images/logo_course_4.jpg" />
+                  <figcaption>Ruby & Rails</figcaption>
                 </figure>
               </div>
-              <div class="item-logo">
-                <figure> <img alt="" src="images/logo_course_5.jpg" />
-                  <figcaption> RUBY AND RAILS </figcaption>
+              <div class="item-logo animated fadeIn">
+                <figure data-title="Experiencia del Usuario"> <img alt="" src="images/logo_course_5.jpg" />
+                  <figcaption>Experiencia del Usuario</figcaption>
                 </figure>
               </div>
-              <div class="item-logo">
-                <figure> <img alt="" src="images/logo_course_6.jpg" />
-                  <figcaption> FACEBOOk APPLICATION </figcaption>
+              <div class="item-logo animated fadeIn">
+                <figure data-title="Adobe Certified Expert: Photoshop CC"> <img alt="" src="images/logo_course_6.jpg" />
+                  <figcaption>Adobe Certified Expert: Photoshop CC</figcaption>
                 </figure>
               </div>
             </div>
@@ -178,34 +179,191 @@
             </div>
           </div>
           <div id="cursos-mobile" class="tab-content">
+            <div class="wrap-courses-logo">
+              <div class="item-logo animated fadeIn active">
+                <figure data-title="Desarrollo de Aplicaciones Móviles en iOS"> <img alt="" src="images/logo_course_1.jpg" />
+                  <figcaption>Desarrollo de Aplicaciones Móviles en iOS</figcaption>
+                </figure>
+              </div>
+              <div class="item-logo animated fadeIn">
+                <figure data-title="Desarrollo de Aplicaciones Móviles en Android"> <img alt="" src="images/logo_course_2.jpg" />
+                  <figcaption>Desarrollo de Aplicaciones Móviles en Android</figcaption>
+                </figure>
+              </div>
+              <div class="item-logo animated fadeIn">
+                <figure data-title="Diseño e Interfaces en iOS"> <img alt="" src="images/logo_course_3.jpg" />
+                  <figcaption>Diseño e Interfaces en iOS</figcaption>
+                </figure>
+              </div>
+              <div class="item-logo animated fadeIn">
+                <figure data-title="Diseño e Interfaces en Android"> <img alt="" src="images/logo_course_4.jpg" />
+                  <figcaption>Diseño e Interfaces en Android</figcaption>
+                </figure>
+              </div>
+            </div>
             <div class="detail">
               <h3>Learn Mobile</h3>
               <p>Practice what you've learned through quizzes and interactive Code Challenges. This style of practicing will allow you to retain information you've learned so you can apply it to your own future projects. You'll earn badges as you journey through our extensive library of courses. These badges are an indicator of what skills you currently possess and are viewable by anyone online.</p>
             </div>
           </div>
           <div id="cursos-3dyprod" class="tab-content">
+            <div class="wrap-courses-logo">
+              <div class="item-logo animated fadeIn active">
+                <figure data-title="Adobe After Effects"> <img alt="" src="images/logo_course_1.jpg" />
+                  <figcaption>Adobe After Effects</figcaption>
+                </figure>
+              </div>
+              <div class="item-logo animated fadeIn">
+                <figure data-title="Adobe Premiere"> <img alt="" src="images/logo_course_2.jpg" />
+                  <figcaption>Adobe Premiere</figcaption>
+                </figure>
+              </div>
+              <div class="item-logo animated fadeIn">
+                <figure data-title="Producción para Publicidad 3D"> <img alt="" src="images/logo_course_3.jpg" />
+                  <figcaption>Producción para Publicidad 3D</figcaption>
+                </figure>
+              </div>
+              <div class="item-logo animated fadeIn">
+                <figure data-title="Autodesk Certified Professional: 3DMax"> <img alt="" src="images/logo_course_4.jpg" />
+                  <figcaption>Autodesk Certified Professional: 3DMax</figcaption>
+                </figure>
+              </div>
+              <div class="item-logo animated fadeIn">
+                <figure data-title="Autodesk Certified Professional: Autocad"> <img alt="" src="images/logo_course_4.jpg" />
+                  <figcaption>Autodesk Certified Professional: Autocad</figcaption>
+                </figure>
+              </div>
+            </div>
             <div class="detail">
               <h3>Learn 3D and Production</h3>
               <p>Practice what you've learned through quizzes and interactive Code Challenges. This style of practicing will allow you to retain information you've learned so you can apply it to your own future projects. You'll earn badges as you journey through our extensive library of courses. These badges are an indicator of what skills you currently possess and are viewable by anyone online.</p>
             </div>
           </div>
+
+
           <div id="cursos-juegos" class="tab-content">
+            <div class="wrap-courses-logo">
+              <div class="item-logo animated fadeIn active">
+                <figure data-title="Game Design"> <img alt="" src="images/logo_course_1.jpg" />
+                  <figcaption>Game Design</figcaption>
+                </figure>
+              </div>
+              <div class="item-logo animated fadeIn">
+                <figure data-title="Arte Conceptua"> <img alt="" src="images/logo_course_2.jpg" />
+                  <figcaption>Arte Conceptua</figcaption>
+                </figure>
+              </div>
+              <div class="item-logo animated fadeIn">
+                <figure data-title="Modelado 3D"> <img alt="" src="images/logo_course_3.jpg" />
+                  <figcaption>Modelado 3D</figcaption>
+                </figure>
+              </div>
+              <div class="item-logo animated fadeIn">
+                <figure data-title="Programación en Unity"> <img alt="" src="images/logo_course_4.jpg" />
+                  <figcaption>Programación en Unity.</figcaption>
+                </figure>
+              </div>
+            </div>
             <div class="detail">
-              <h3>Learn Game development</h3>
+              <h3>Learn 3D and Production</h3>
               <p>Practice what you've learned through quizzes and interactive Code Challenges. This style of practicing will allow you to retain information you've learned so you can apply it to your own future projects. You'll earn badges as you journey through our extensive library of courses. These badges are an indicator of what skills you currently possess and are viewable by anyone online.</p>
+            </div>
+          </div>
+
+
+
+
+
+          <div id="cursos-corporativo" class="tab-content">
+            <div class="detail">
+              <h3>Capacitación Corporativa</h3>
+              <p>Area51 Training Center, como Centro de Certificación Internacional y Centro de Entrenamiento Oficial de Adobe y Autodesk pone a disposición de las empresas nuestros cursos especializados o según la necesidad requerida. Contamos con instructores de experiencia comprobada y que han participado en proyectos de gran envergadura a nivel nacional e internacional.</p>
+              <p>Contamos con instructores internacionales que pueden adaptarse a los requerimientos del curso y establecer horarios factibles para la capacitación.</p>
+              <p>Las capacitaciones pueden realizarse en las cómodas instalaciones de nuestras sedes en Miraflores o Chorrillos - Villa. Asimismo, podemos realizar las clases en las instalaciones del cliente en los horarios que disponga.</p>
+              <p>
+                <button class="btn download-brochure">Descargar brochure</button>
+              </p>
             </div>
           </div>
         </div>
       </div>
     </div>
   </section>
-  <section id="sec-nosotros" class="section w-fluid">
-    <div class="text-float">
-    <!-- <div class="text-float dark"> -->
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic, omnis tempora vel debitis maiores autem aperiam ex ratione.</p>
-      <button class="btn">Launch</button>
+  <section id="sec-nosotros" class="section w-fluid cf">
+    <div class="nosotros-gallery cf w-inner hidden">
+      <div class="gallery">
+        <div id="photo-big" class="animated"></div>
+        <article class="item">
+          <figure> <img alt="" src="images/thumbs/01.jpg" /></figure>
+        </article>
+        <article class="item">
+          <figure> <img alt="" src="images/thumbs/02.jpg" /></figure>
+        </article>
+        <article class="item">
+          <figure> <img alt="" src="images/thumbs/03.jpg" /></figure>
+        </article>
+        <article class="item">
+          <figure> <img alt="" src="images/thumbs/04.jpg" /></figure>
+        </article>
+        <article class="item">
+          <figure> <img alt="" src="images/thumbs/05.jpg" /></figure>
+        </article>
+        <article class="item">
+          <figure> <img alt="" src="images/thumbs/06.jpg" /></figure>
+        </article>
+        <article class="item">
+          <figure> <img alt="" src="images/thumbs/07.jpg" /></figure>
+        </article>
+        <article class="item">
+          <figure> <img alt="" src="images/thumbs/08.jpg" /></figure>
+        </article>
+        <article class="item">
+          <figure> <img alt="" src="images/thumbs/09.jpg" /></figure>
+        </article>
+        <article class="item">
+          <figure> <img alt="" src="images/thumbs/10.jpg" /></figure>
+        </article>
+        <article class="item">
+          <figure> <img alt="" src="images/thumbs/11.jpg" /></figure>
+        </article>
+        <article class="item">
+          <figure> <img alt="" src="images/thumbs/12.jpg" /></figure>
+        </article>
+        <article class="item">
+          <figure> <img alt="" src="images/thumbs/13.jpg" /></figure>
+        </article>
+        <article class="item">
+          <figure> <img alt="" src="images/thumbs/14.jpg" /></figure>
+        </article>
+        <article class="item">
+          <figure> <img alt="" src="images/thumbs/15.jpg" /></figure>
+        </article>
+        <article class="item">
+          <figure> <img alt="" src="images/thumbs/16.jpg" /></figure>
+        </article>
+        <article class="item">
+          <figure> <img alt="" src="images/thumbs/17.jpg" /></figure>
+        </article>
+        <article class="item">
+          <figure> <img alt="" src="images/thumbs/18.jpg" /></figure>
+        </article>
+        <article class="item">
+          <figure> <img alt="" src="images/thumbs/19.jpg" /></figure>
+        </article>
+        <article class="item">
+          <figure> <img alt="" src="images/thumbs/20.jpg" /></figure>
+        </article>
+      </div>
+      <button class="btn return-nosotros">Volver</button>
     </div>
-    <section id="alianzas" class="w-fluid">
+    <div class="text-float nosotros-content">
+    <!-- <div class="text-float dark"> -->
+      <p class="animated fadeInLeft">
+        Area51 Training Center reúne a reconocidos profesionales del medio digital e instructores Certificados. Cuenta con el respaldo internacional de Adobe, Autodesk y Pearson.
+      </p>
+      <button class="btn see-gallery animated fadeInDown" data-wow-delay="0.6s">Launch</button>
+    </div>
+    <section id="alianzas" class="w-fluid nosotros-content">
       <div class="cf w-inner">
         <article class="item-alianza">
           <figure> <img alt="" src="images/logo_alianzas_1.png" /></figure>
@@ -228,78 +386,114 @@
     <path d="M0 0 L50 100 L100 0 Z" />
     </svg>
   </section>
-  <section id="sec-instructores" class="section w-fluid">
+  <section id="sec-instructores" class="section w-fluid cf">
     <div class="cf w-inner">
-      <div class="head">
+      <div class="head animated slideInLeft">
         <h2>INSTRUCTORES</h2>
         <p style="display:none;">Area51 Training Center, es un centro de entrenamiento OFICIAL de Adobe y Autodesk que reúne a los principales profesionales e instructores del país.</p>
       </div>
       <div class="wrap-instructors">
-        <article class="item instructor">
-          <figure>
-            <img alt="" src="images/img_instructor.jpg" />
-            <p class="detail">
-              Es Google AdWords Certified, publicista egresada del IPP y Chief Communications Officer en Studio INI4.
-            </p>
-          </figure>
-          <h4> MARU TAMAYO </h4>
-        </article>
-        <article class="item instructor">
-          <figure> <img alt="" src="images/img_instructor.jpg" />
-            <p class="detail">
-              Es Google AdWords Certified, publicista egresada del IPP y Chief Communications Officer en Studio INI4.
-            </p>
-          </figure>
-          <h4> MARU TAMAYO </h4>
-        </article>
-        <article class="item instructor">
-          <figure> <img alt="" src="images/img_instructor.jpg" />
-            <p class="detail">
-              Es Google AdWords Certified, publicista egresada del IPP y Chief Communications Officer en Studio INI4.
-            </p>
-          </figure>
-          <h4> MARU TAMAYO </h4>
-        </article>
-        <article class="item instructor">
-          <figure> <img alt="" src="images/img_instructor.jpg" />
-            <p class="detail">
-              Es Google AdWords Certified, publicista egresada del IPP y Chief Communications Officer en Studio INI4.
-            </p>
-          </figure>
-          <h4> MARU TAMAYO </h4>
-        </article>
-        <article class="item instructor">
-          <figure> <img alt="" src="images/img_instructor.jpg" />
-            <p class="detail">
-              Es Google AdWords Certified, publicista egresada del IPP y Chief Communications Officer en Studio INI4.
-            </p>
-          </figure>
-          <h4> MARU TAMAYO </h4>
-        </article>
-        <article class="item instructor">
-          <figure> <img alt="" src="images/img_instructor.jpg" />
-            <p class="detail">
-              Es Google AdWords Certified, publicista egresada del IPP y Chief Communications Officer en Studio INI4.
-            </p>
-          </figure>
-          <h4> MARU TAMAYO </h4>
-        </article>
-        <article class="item instructor">
-          <figure> <img alt="" src="images/img_instructor.jpg" />
-            <p class="detail">
-              Es Google AdWords Certified, publicista egresada del IPP y Chief Communications Officer en Studio INI4.
-            </p>
-          </figure>
-          <h4> MARU TAMAYO </h4>
-        </article>
-        <article class="item instructor">
-          <figure> <img alt="" src="images/img_instructor.jpg" />
-            <p class="detail">
-              Es Google AdWords Certified, publicista egresada del IPP y Chief Communications Officer en Studio INI4.
-            </p>
-          </figure>
-          <h4> MARU TAMAYO </h4>
-        </article>
+        <div class="slide">
+          <article class="item instructor animated fadeInDown">
+            <figure>
+              <img alt="" src="images/img_instructor.jpg" />
+              <p class="detail">
+                Es Google AdWords Certified, publicista egresada del IPP y Chief Communications Officer en Studio INI4.
+              </p>
+            </figure>
+            <h4> MARU TAMAYO </h4>
+          </article>
+          <article class="item instructor animated fadeInDown">
+            <figure> <img alt="" src="images/img_instructor_gayoso.jpg" />
+              <p class="detail">
+                Es Autodesk Certified Instructor, fundador de PeruWorkShop y Chief Executive Officer en CollisionArt.
+              </p>
+            </figure>
+            <h4>DANIEL GAYOSO</h4>
+          </article>
+          <article class="item instructor animated fadeInDown">
+            <figure> <img alt="" src="images/img_instructor_vasquez.jpg" />
+              <p class="detail">
+                Es Adobe Certified Instructor, Adobe Regional Coordinator y Adobe Community Champions.
+              </p>
+            </figure>
+            <h4>ELDER VÁSQUEZ</h4>
+          </article>
+          <article class="item instructor animated fadeInDown">
+            <figure> <img alt="" src="images/img_instructor_acuna.jpg" />
+              <p class="detail">
+                Es Adobe Certified Expert, pertenece al equipo de desarrollo en la agencia Bell&Whistle New York-EEUU.
+              </p>
+            </figure>
+            <h4>GUISELLA ACUÑA</h4>
+          </article>
+          <article class="item instructor animated fadeInUp">
+            <figure> <img alt="" src="images/img_instructor_soto.jpg" />
+              <p class="detail">
+                Es el primer Authorized Rhino Trainer en Perú y Chief Executive Officer en 3D Model Perú.
+              </p>
+            </figure>
+            <h4>VICTOR SOTO</h4>
+          </article>
+          <article class="item instructor animated fadeInUp">
+            <figure> <img alt="" src="images/img_instructor_castro.jpg" />
+              <p class="detail">
+                Es Adobe Certified Expert y pertenece al equipo de desarrollo de Studio INI4 y conferencista en Adobe Express Perú.
+              </p>
+            </figure>
+            <h4>RENZO CASTRO</h4>
+          </article>
+          <article class="item instructor animated fadeInUp">
+            <figure> <img alt="" src="images/img_instructor_martinez.jpg" />
+              <p class="detail">
+                Fundador de PreZentit.com y co Fundador de Lucumalabs, conferencista y promotor de buenas prácticas y uso de HTML5.
+              </p>
+            </figure>
+            <h4>GERMÁN MARTÍNEZ</h4>
+          </article>
+          <article class="item instructor animated fadeInUp">
+            <figure> <img alt="" src="images/img_instructor_miranda.jpg" />
+              <p class="detail">
+                Jefe de Diseño Web de El Comercio y Diseñadora web con más de 10 años de experiencia.
+              </p>
+            </figure>
+            <h4>MARIELLA MIRANDA</h4>
+          </article>
+        </div>
+        <div class="slide">
+          <article class="item instructor animated fadeInDown">
+            <figure> <img alt="" src="images/img_instructor_melgarejo.jpg" />
+              <p class="detail">
+                Experto reconocido en el mundo del 3D, es Chief Financial Officer en Toy Catz Inc.
+              </p>
+            </figure>
+            <h4>ALDO MELGAREJO</h4>
+          </article>
+          <article class="item instructor animated fadeInDown">
+            <figure> <img alt="" src="images/img_instructor_alarcon.jpg" />
+              <p class="detail">
+                Es Adobe Certified Expert, Director Creativo de Studio INI4 y conferencistas en Adobe en Vivo 2008 y 2009.
+              </p>
+            </figure>
+            <h4>LUIS ALARCÓN</h4>
+          </article>
+          <article class="item instructor animated fadeInDown">
+            <figure> <img alt="" src="images/img_instructor_pereyra.jpg" />
+              <p class="detail">
+                Conferencistas y promotor del uso de Ruby & Rails en el Perú y Chief Executive Officer en Xenda.
+              </p>
+            </figure>
+            <h4>ALVARO PEREYRA</h4>
+          </article>
+          <article class="item instructor animated fadeInDown">
+            <figure> <img alt="" src="images/img_instructor_soplin.jpg" />
+              <p class="detail">
+                Gerente de Arquitectura de Información en Grupo Clarín-Argentina. Arquitecto de información y desarrollador web.
+              </p>
+            </figure>
+            <h4>CESAR SOPLÍN</h4>
+          </article>
+        </div>
       </div>
     </div>
   </section>
@@ -309,8 +503,8 @@
     <button id="return-contacto" class="btn">Regresar a la información de contacto</button>
     <div id="contact-content">
       <div class="cf w-inner">
-        <div class="wrap-form">
-          <div class="head">
+        <div class="wrap-form animated slideInLeft">
+          <div class="head animated slideInLeft">
             <h2>CONTACTO</h2>
             <p>Area51 Training Center, es un centro de entrenamiento OFICIAL de Adobe y Autodesk que reúne a los.</p>
           </div>
@@ -361,7 +555,7 @@
               <div class="block-direction">
                 <h4>CORREO</h4>
                 <p>info@area51.pe</p>
-                <a class="see-map btn" target="_blank" href="https://www.google.com/maps/?q=Jose+Pardo+Miraflroes&amp;ll=-12.119148,-77.033599">Ver el mapa</a>
+                <a class="see-map btn" target="_blank" href="https://www.google.com/maps/?q=Jose+Pardo+Miraflores&amp;ll=-12.119148,-77.033599">Ver el mapa</a>
               </div>
             </div>
             <div id="direccion-villa" class="tab-content">
