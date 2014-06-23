@@ -267,6 +267,16 @@
   });
 
   if (isMobile()) {
+    $('.animated').addClass('wow');
+    var wow = new WOW(
+      {
+        boxClass:     'wow',      // default
+        animateClass: 'animated', // default
+        offset:       0          // default
+      }
+    )
+    wow.init();
+
     $('#nav-dots').find('.toSlide').bind('click', function () {
       var slideIndex = parseInt($(this).data('index'), 10);
       $('#nav-dots span:eq(' + (slideIndex - 1) + ')').addClass('nav-dot-current').siblings().removeClass('nav-dot-current');
