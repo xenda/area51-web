@@ -468,10 +468,19 @@
 
   $(document).on('click', '.wrap-courses-logo figure', function() {
     var title = $(this).data('title'),
+        description = $(this).data('description') || '',
         caption = $(this).parents('.tab-content').find('.detail h3'),
+        body = $(this).parents('.tab-content').find('.detail p'),
         captionText = caption.text();
 
     caption.text(title);
-    $(this).data('title', captionText);
+    body.text(description);
+    //$(this).data('title', captionText);
+  });
+
+  $(document).on('click', '.wrap-courses-logo .item-logo', function() {
+    var item = $(this);
+    item.siblings('.item-logo').removeClass('active');
+    item.addClass('active');
   });
 })(Modernizr, jQuery, GMaps, window, document, navigator);
